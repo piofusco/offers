@@ -14,7 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let homeViewController = UIViewController()
+        let homeViewController = OffersViewController()
         homeViewController.view.backgroundColor = UIColor.blue
 
         window = UIWindow(frame: UIScreen.main.bounds)

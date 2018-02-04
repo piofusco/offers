@@ -9,28 +9,48 @@
 import XCTest
 
 class OffersUITests: XCTestCase {
-        
+
+    let application = XCUIApplication()
+
     override func setUp() {
         super.setUp()
-        
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-        
-        // In UI tests it is usually best to stop immediately when a failure occurs.
-        continueAfterFailure = false
-        // UI tests must launch the application that they test. Doing this in setup will make sure it happens for each test method.
-        XCUIApplication().launch()
 
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        continueAfterFailure = false
+        application.launch()
     }
     
     override func tearDown() {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testExample() {
-        // Use recording to get started writing UI tests.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func test_usersCanSeeOffers() {
+        let collectionCell1 = application.collectionViews.cells["offerCell-0"]
+        XCTAssertTrue(collectionCell1.exists)
+        XCTAssertTrue(collectionCell1.staticTexts["Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges"].exists)
+        XCTAssertTrue(collectionCell1.staticTexts["$0.75 Cash Back"].exists)
+        collectionCell1.tap()
+
+        XCTAssertTrue(application.staticTexts["Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges"].exists)
+        XCTAssertTrue(application.staticTexts["Any variety - 2 ct. pack or larger"].exists)
+        XCTAssertTrue(application.staticTexts["Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges " +
+                "for any variety, 2 ct. pack or larger."].exists)
+        XCTAssertTrue(application.staticTexts["$0.75 Cash Back"].exists)
+
+        application.buttons["Back"].tap()
+
+        let collectionCell2 = application.collectionViews.cells["offerCell-1"]
+        XCTAssertTrue(collectionCell2.exists)
+        XCTAssertTrue(collectionCell2.staticTexts["Scotch-Brite® Scrub Dots Heavy Duty Scrub Sponges"].exists)
+        XCTAssertTrue(collectionCell2.staticTexts["$0.75 Cash Back"].exists)
+        collectionCell2.tap()
+
+        XCTAssertTrue(application.staticTexts["Scotch-Brite® Scrub Dots Heavy Duty Scrub Sponges"].exists)
+        XCTAssertTrue(application.staticTexts["Any variety - 2 ct. pack or larger"].exists)
+        XCTAssertTrue(application.staticTexts["Rebate valid on Scotch-Brite® Scrub Dots Heavy Duty Scrub Sponges for " +
+                "any variety, 2 ct. pack or larger."].exists)
+        XCTAssertTrue(application.staticTexts["$0.75 Cash Back"].exists)
+
+        application.buttons["Back"].tap()
     }
     
 }
