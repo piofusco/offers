@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B5B9C072D5F9B7B62F48F509 /* OffersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */; };
+		B5B9C56000BB97C046D38882 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C650EAD7B20CF5092EA0 /* Colors.swift */; };
 		F38458C320250143003C32FF /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38458C120250143003C32FF /* Quick.framework */; };
 		F38458C420250143003C32FF /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38458C220250143003C32FF /* Nimble.framework */; };
 		F39F3AC32022E722004286C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F3AC22022E722004286C6 /* AppDelegate.swift */; };
@@ -38,6 +39,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B5B9C650EAD7B20CF5092EA0 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewCell.swift; sourceTree = "<group>"; };
 		F38458C120250143003C32FF /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		F38458C220250143003C32FF /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -116,6 +118,7 @@
 				F39F3ACB2022E722004286C6 /* LaunchScreen.storyboard */,
 				F39F3ACE2022E722004286C6 /* Info.plist */,
 				B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */,
+				B5B9C650EAD7B20CF5092EA0 /* Colors.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -326,6 +329,7 @@
 				F39F3AC52022E722004286C6 /* OffersViewController.swift in Sources */,
 				F39F3AC32022E722004286C6 /* AppDelegate.swift in Sources */,
 				B5B9C072D5F9B7B62F48F509 /* OffersCollectionViewCell.swift in Sources */,
+				B5B9C56000BB97C046D38882 /* Colors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -13,10 +13,8 @@ The details for each screen are as follows:
 	* Fonts & Colors:
 		* *Amount*
 			* iOS: AvenirNext-DemiBold, 12 pt, #4A4A4A
-          * Android: Roboto-Bold, 12 sp, #4A4A4A
 		* *Name*
 			* iOS: AvenirNext-Regular, 11 pt, #4A4A4A
-	      * Android: Roboto-Regular, 11 sp, #4A4A4A
       * *Additional Notes*
 	      * Margins are noted in the mock. There are a couple items that are not listed.
 		      * Corner radius for the gray background: 5 pt
