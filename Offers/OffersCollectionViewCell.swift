@@ -10,7 +10,7 @@ import SnapKit
 class OffersCollectionViewCell: UICollectionViewCell {
     var imageBackDrop: UIView = UIView()
     var imageView: UIImageView = UIImageView()
-    var offerLabel: UILabel = UILabel()
+    var nameLabel: UILabel = UILabel()
     var descriptionLabel: UILabel = UILabel()
 
     override init(frame: CGRect) {
@@ -39,10 +39,10 @@ class OffersCollectionViewCell: UICollectionViewCell {
             make.left.equalTo(imageBackDrop.snp.left).offset(6)
         }
 
-        offerLabel.text = "$1.00 cash back"
-        offerLabel.font = UIFont.boldSystemFont(ofSize: 12)
-        addSubview(offerLabel)
-        offerLabel.snp.makeConstraints { (make) -> Void in
+        nameLabel.text = "$1.00 cash back"
+        nameLabel.font = UIFont.boldSystemFont(ofSize: 12)
+        addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(imageBackDrop.snp.bottom).offset(8)
         }
 
@@ -50,7 +50,7 @@ class OffersCollectionViewCell: UICollectionViewCell {
         descriptionLabel.font = UIFont.systemFont(ofSize: 11)
         addSubview(descriptionLabel)
         descriptionLabel.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(offerLabel.snp.bottom)
+            make.top.equalTo(nameLabel.snp.bottom)
             make.bottom.equalTo(contentView.snp.bottom).inset(24)
         }
     }

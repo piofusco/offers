@@ -6,12 +6,15 @@
 //  Copyright © 2018 piofusco. All rights reserved.
 //
 
-import SnapKit
 import UIKit
 
-class OffersViewController: UIViewController {
+import SnapKit
+import Freddy
+
+class OffersViewController: UIViewController, UICollectionViewDataSource {
 
     var collectionView: UICollectionView!
+    private var offers = [] as [Offer]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,22 +40,33 @@ class OffersViewController: UIViewController {
             make.height.equalTo(self.view.bounds.height)
             make.width.equalTo(self.view.bounds.width)
         }
-    }
-}
 
-extension OffersViewController: UICollectionViewDataSource {
+        if let path = Bundle.main.path(forResource: "offers", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                let json = try JSON(data: data)
+                offers = try json.getArray().map(Offer.init)
+                collectionView.reloadData()
+            } catch {
+
+            }
+        }
+    }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "offerCell",
                                                       for: indexPath) as! OffersCollectionViewCell
 
-            cell.backgroundColor = UIColor.magenta
-            cell.accessibilityIdentifier = "offerCell-\(indexPath.row)"
+        cell.backgroundColor = UIColor.magenta
+        cell.accessibilityIdentifier = "offerCell-\(indexPath.row)"
+        cell.descriptionLabel.text = offers[indexPath.row].description
+        cell.nameLabel.text = offers[indexPath.row].name
 
-            return cell
+        return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 8
+        return offers.count
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
