@@ -13,12 +13,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        let homeViewController = OffersViewController()
-        homeViewController.view.backgroundColor = UIColor.blue
+    func application(_ application: UIApplication,
+                     didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        let offersViewController = OffersViewController()
+        offersViewController.view.backgroundColor = UIColor.blue
+
+        let navigationController = UINavigationController(rootViewController: offersViewController)
 
         window = UIWindow(frame: UIScreen.main.bounds)
-        window!.rootViewController = homeViewController
+        window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
 
         return true

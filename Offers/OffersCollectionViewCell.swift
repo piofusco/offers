@@ -8,10 +8,10 @@ import UIKit
 import SnapKit
 
 class OffersCollectionViewCell: UICollectionViewCell {
-    var imageBackDrop: UIView = UIView()
-    var imageView: UIImageView = UIImageView()
-    var nameLabel: UILabel = UILabel()
-    var descriptionLabel: UILabel = UILabel()
+    var imageBackDrop = UIView()
+    var imageView = UIImageView()
+    var nameLabel = UILabel()
+    var descriptionLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

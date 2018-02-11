@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B5B9C072D5F9B7B62F48F509 /* OffersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */; };
 		B5B9C2121E71C3A3233E49B0 /* offers.json in Resources */ = {isa = PBXBuildFile; fileRef = B5B9CBA6C790EDF169B09572 /* offers.json */; };
+		B5B9C4D2692C5319BE2A5495 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C9480C6FF0BA196E90E4 /* DetailViewController.swift */; };
 		B5B9C56000BB97C046D38882 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C650EAD7B20CF5092EA0 /* Colors.swift */; };
 		B5B9C86122C3080C8C0C4C79 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CA7CB520362924823BB0 /* Offer.swift */; };
 		F38458C320250143003C32FF /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38458C120250143003C32FF /* Quick.framework */; };
@@ -42,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		B5B9C650EAD7B20CF5092EA0 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
+		B5B9C9480C6FF0BA196E90E4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B5B9CA7CB520362924823BB0 /* Offer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		B5B9CBA6C790EDF169B09572 /* offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = offers.json; sourceTree = "<group>"; };
 		B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -125,6 +127,7 @@
 				B5B9C650EAD7B20CF5092EA0 /* Colors.swift */,
 				B5B9CBA6C790EDF169B09572 /* offers.json */,
 				B5B9CA7CB520362924823BB0 /* Offer.swift */,
+				B5B9C9480C6FF0BA196E90E4 /* DetailViewController.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -338,6 +341,7 @@
 				B5B9C072D5F9B7B62F48F509 /* OffersCollectionViewCell.swift in Sources */,
 				B5B9C56000BB97C046D38882 /* Colors.swift in Sources */,
 				B5B9C86122C3080C8C0C4C79 /* Offer.swift in Sources */,
+				B5B9C4D2692C5319BE2A5495 /* DetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

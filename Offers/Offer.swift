@@ -13,6 +13,8 @@ struct Offer {
     let description: String
     let terms: String
     let currentValue: String
+
+    var favorited = false
 }
 
 extension Offer: JSONDecodable {

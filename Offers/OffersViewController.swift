@@ -30,6 +30,8 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
         collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: "offerCell")
         collectionView.backgroundColor = UIColor.blue
 
+        collectionView.delegate = self
+
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.view.snp.top)
@@ -53,6 +55,12 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
         }
     }
 
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        self.navigationController?.isNavigationBarHidden = true
+    }
+
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "offerCell",
                                                       for: indexPath) as! OffersCollectionViewCell
@@ -71,5 +79,24 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
+    }
+}
+
+extension OffersViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let detailViewController = DetailViewController()
+        detailViewController.delegate = self
+        detailViewController.offer = offers[indexPath.row]
+        detailViewController.navigationItem.title = "Offer \(indexPath.row + 1)"
+
+        navigationController?.pushViewController(detailViewController, animated: true)
+    }
+}
+
+extension OffersViewController: Favoritable {
+    func offerFavoritedWasToggled() {
+        if let selectedOfferIndex = self.collectionView.indexPathsForSelectedItems?[0].row {
+            offers[selectedOfferIndex].favorited = !offers[selectedOfferIndex].favorited
+        }
     }
 }
