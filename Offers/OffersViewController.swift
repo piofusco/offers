@@ -10,6 +10,7 @@ import UIKit
 
 import SnapKit
 import Freddy
+import Kingfisher
 
 class OffersViewController: UIViewController, UICollectionViewDataSource {
 
@@ -19,17 +20,13 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.clear
-
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: UIScreen.main.bounds.width / 2.2, height: UIScreen.main.bounds.width / 2)
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
+        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 2) - 16, height: UIScreen.main.bounds.width / 2)
 
         collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: "offerCell")
-        collectionView.backgroundColor = UIColor.blue
-
+        collectionView.backgroundColor = UIColor.green
         collectionView.delegate = self
 
         self.view.addSubview(collectionView)
@@ -50,7 +47,7 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
                 offers = try json.getArray().map(Offer.init)
                 collectionView.reloadData()
             } catch {
-
+                print("Uh oh")
             }
         }
     }
@@ -61,14 +58,26 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
         self.navigationController?.isNavigationBarHidden = true
     }
 
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
+                    -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "offerCell",
                                                       for: indexPath) as! OffersCollectionViewCell
 
         cell.backgroundColor = UIColor.magenta
         cell.accessibilityIdentifier = "offerCell-\(indexPath.row)"
-        cell.descriptionLabel.text = offers[indexPath.row].description
-        cell.nameLabel.text = offers[indexPath.row].name
+        cell.descriptionLabelText = offers[indexPath.row].description
+        cell.nameLabelText = offers[indexPath.row].name
+        if offers[indexPath.row].favorited {
+            cell.favoriteCell()
+        } else {
+            cell.unfavoriteCell()
+        }
+
+        if let urlString = offers[indexPath.row].url {
+            if let url = URL(string: urlString) {
+                cell.imageView.kf.setImage(with: url)
+            }
+        }
 
         return cell
     }
@@ -80,6 +89,7 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
+
 }
 
 extension OffersViewController: UICollectionViewDelegate {
@@ -97,6 +107,7 @@ extension OffersViewController: Favoritable {
     func offerFavoritedWasToggled() {
         if let selectedOfferIndex = self.collectionView.indexPathsForSelectedItems?[0].row {
             offers[selectedOfferIndex].favorited = !offers[selectedOfferIndex].favorited
+            collectionView.reloadData()
         }
     }
 }

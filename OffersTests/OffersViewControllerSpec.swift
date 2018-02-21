@@ -15,7 +15,7 @@ import Nimble
 
 class OffersTests: QuickSpec {
     override func spec() {
-        describe("OffersViewController"){
+        describe("OffersViewController") {
             describe("UICollectionViewDataSource") {
                 it("numberOfSections") {
                     let window = UIWindow(frame: UIScreen.main.bounds)
@@ -34,7 +34,7 @@ class OffersTests: QuickSpec {
 
                     subject.view.layoutSubviews()
 
-                    expect(subject.collectionView(subject.collectionView!, numberOfItemsInSection: 0)).to(equal(8))
+                    expect(subject.collectionView(subject.collectionView!, numberOfItemsInSection: 0)).to(equal(132))
                 }
             }
         }

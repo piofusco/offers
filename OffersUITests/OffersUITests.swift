@@ -41,10 +41,15 @@ class OffersUITests: XCTestCase {
         offerOneFavoritedSwitch.tap()
         application.buttons["Back"].tap()
 
+        XCTAssertTrue(collectionCell1.staticTexts["FAVORITED"].exists)
         collectionCell1.tap()
         offerOneIsFavorited = (offerOneFavoritedSwitch.value as! String).toBool()
         XCTAssertTrue(offerOneIsFavorited)
+
+        offerOneFavoritedSwitch.tap()
         application.buttons["Back"].tap()
+
+        XCTAssertFalse(collectionCell1.staticTexts["FAVORITED"].exists)
 
         let collectionCell2 = application.collectionViews.cells["offerCell-1"]
         XCTAssertTrue(collectionCell2.exists)
@@ -67,7 +72,8 @@ class OffersUITests: XCTestCase {
         offerTwoFavoritedSwitch.tap()
         application.buttons["Back"].tap()
 
-        collectionCell1.tap()
+        XCTAssertTrue(collectionCell2.staticTexts["FAVORITED"].exists)
+        collectionCell2.tap()
         offerTwoIsFavorited = (offerTwoFavoritedSwitch.value as! String).toBool()
         XCTAssertTrue(offerTwoIsFavorited)
     }

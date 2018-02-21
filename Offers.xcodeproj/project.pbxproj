@@ -12,6 +12,7 @@
 		B5B9C4D2692C5319BE2A5495 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C9480C6FF0BA196E90E4 /* DetailViewController.swift */; };
 		B5B9C56000BB97C046D38882 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C650EAD7B20CF5092EA0 /* Colors.swift */; };
 		B5B9C86122C3080C8C0C4C79 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CA7CB520362924823BB0 /* Offer.swift */; };
+		F31196E32045CE9C00D9E2F9 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31196E22045CE9C00D9E2F9 /* Kingfisher.framework */; };
 		F38458C320250143003C32FF /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38458C120250143003C32FF /* Quick.framework */; };
 		F38458C420250143003C32FF /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38458C220250143003C32FF /* Nimble.framework */; };
 		F39F3AC32022E722004286C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F3AC22022E722004286C6 /* AppDelegate.swift */; };
@@ -47,6 +48,7 @@
 		B5B9CA7CB520362924823BB0 /* Offer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		B5B9CBA6C790EDF169B09572 /* offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = offers.json; sourceTree = "<group>"; };
 		B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewCell.swift; sourceTree = "<group>"; };
+		F31196E22045CE9C00D9E2F9 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		F38458C120250143003C32FF /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		F38458C220250143003C32FF /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		F39F3ABF2022E722004286C6 /* Offers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Offers.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -70,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F31196E32045CE9C00D9E2F9 /* Kingfisher.framework in Frameworks */,
 				F3EA06052024FCEC00D786CF /* Freddy.framework in Frameworks */,
 				F3EA06062024FCEC00D786CF /* SnapKit.framework in Frameworks */,
 			);
@@ -153,6 +156,7 @@
 		F3EA06022024FCEC00D786CF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F31196E22045CE9C00D9E2F9 /* Kingfisher.framework */,
 				F38458C220250143003C32FF /* Nimble.framework */,
 				F38458C120250143003C32FF /* Quick.framework */,
 				F3EA06032024FCEC00D786CF /* Freddy.framework */,
@@ -322,6 +326,7 @@
 			inputPaths = (
 				"$(SRCROOT)/Carthage/Build/iOS/Freddy.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/SnapKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Kingfisher.framework",
 			);
 			outputPaths = (
 			);
