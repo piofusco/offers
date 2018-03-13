@@ -11,9 +11,18 @@ class OffersCollectionViewCell: UICollectionViewCell {
     private var imageBackDrop = UIView()
     var imageView = UIImageView()
 
+    private var valueLabel = UILabel()
     private var nameLabel = UILabel()
-    private var descriptionLabel = UILabel()
     private var favoritedLabel = UILabel()
+
+    var valueLabelText: String? {
+        set {
+            valueLabel.text = newValue
+        }
+        get {
+            return valueLabel.text
+        }
+    }
 
     var nameLabelText: String? {
         set {
@@ -21,15 +30,6 @@ class OffersCollectionViewCell: UICollectionViewCell {
         }
         get {
             return nameLabel.text
-        }
-    }
-
-    var descriptionLabelText: String? {
-        set {
-            descriptionLabel.text = newValue
-        }
-        get {
-            return descriptionLabel.text
         }
     }
 
@@ -45,62 +45,51 @@ class OffersCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        contentView.backgroundColor = UIColor.purple
-
         imageBackDrop.backgroundColor = Colors.gray.color()
         imageBackDrop.layer.cornerRadius = 5
-        addSubview(imageBackDrop)
+        contentView.addSubview(imageBackDrop)
         imageBackDrop.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(contentView.snp.top)
-            make.trailing.equalTo(contentView.snp.trailing)
-            make.leading.equalTo(contentView.snp.leading)
+            make.top.trailing.leading.equalTo(contentView)
 
-            make.width.equalTo(contentView.bounds.width)
+            make.width.equalTo(contentView)
             make.height.equalTo(contentView.bounds.width * 3 / 5)
         }
 
-        imageView = UIImageView(image: UIImage(named: "MockProduct"))
         imageBackDrop.addSubview(imageView)
         imageView.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(imageBackDrop.snp.top).offset(6)
-            make.right.equalTo(imageBackDrop.snp.right).inset(6)
-            make.bottom.equalTo(imageBackDrop.snp.bottom).inset(6)
-            make.left.equalTo(imageBackDrop.snp.left).offset(6)
+            make.top.left.equalTo(imageBackDrop).offset(6)
+            make.right.bottom.equalTo(imageBackDrop).inset(6)
         }
         imageView.contentMode = .scaleAspectFit
 
-        nameLabel.text = "$1.00 cash back"
-        nameLabel.numberOfLines = 0
-        nameLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
-        addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(contentView.snp.leading).inset(8)
+        valueLabel.text = "$1.00 cash back"
+        valueLabel.font = UIFont(name: "AvenirNext-DemiBold", size: 12)
+        valueLabel.textColor = Colors.darkGray.color()
+        contentView.addSubview(valueLabel)
+        valueLabel.snp.makeConstraints { (make) -> Void in
+            make.leading.trailing.equalTo(contentView)
             make.top.equalTo(imageBackDrop.snp.bottom).offset(8)
-            make.trailing.equalTo(contentView.snp.trailing).inset(8)
         }
 
-        descriptionLabel.text = "Description"
-        descriptionLabel.numberOfLines = 0
-        descriptionLabel.font = UIFont(name: "AvenirNext-Regular", size: 11)
-        addSubview(descriptionLabel)
-        descriptionLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(contentView.snp.leading).inset(8)
-            make.top.equalTo(nameLabel.snp.bottom).offset(3)
-            make.trailing.equalTo(contentView.snp.trailing).inset(8)
-            make.bottom.equalTo(contentView.snp.bottom).inset(24)
+        nameLabel.text = "Description"
+        nameLabel.font = UIFont(name: "AvenirNext-Regular", size: 11)
+        nameLabel.textColor = Colors.darkGray.color()
+        contentView.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(valueLabel.snp.bottom).offset(3)
+            make.leading.trailing.equalTo(contentView)
         }
 
         favoritedLabel.isHidden = true
         favoritedLabel.text = "FAVORITED"
         favoritedLabel.numberOfLines = 0
-        favoritedLabel.font = UIFont(name: "AvenirNext-Regular", size: 11)
-        addSubview(favoritedLabel)
+        favoritedLabel.font = UIFont(name: "AvenirNext-Regular", size: 30)
+        favoritedLabel.textColor = UIColor.red
+        contentView.addSubview(favoritedLabel)
         favoritedLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(contentView.snp.leading).inset(8)
-            make.top.equalTo(descriptionLabel.snp.top).offset(5)
-            make.trailing.equalTo(contentView.snp.trailing)
-            make.bottom.equalTo(contentView.snp.bottom)
+            make.center.equalTo(contentView)
         }
+        favoritedLabel.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi) / 4);
     }
 
     required init?(coder aDecoder: NSCoder) {

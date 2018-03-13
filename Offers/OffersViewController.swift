@@ -21,23 +21,25 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
         super.viewDidLoad()
 
         let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: (UIScreen.main.bounds.width / 2) - 16, height: UIScreen.main.bounds.width / 2)
+        let margin = CGFloat(12)
+        let interimItemSpacing = CGFloat(8)
+        layout.sectionInset = UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
+        let width = (UIScreen.main.bounds.width - (margin * 2) - interimItemSpacing) / 2
+        let height = width * 0.85
+        layout.itemSize = CGSize(width: width, height: height)
+        layout.minimumInteritemSpacing = interimItemSpacing
+        layout.minimumLineSpacing = 24
 
         collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: "offerCell")
-        collectionView.backgroundColor = UIColor.green
         collectionView.delegate = self
+        collectionView.backgroundColor = UIColor.white
 
         self.view.addSubview(collectionView)
         collectionView.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(self.view.snp.top)
-            make.trailing.equalTo(self.view.snp.trailing)
-            make.bottom.equalTo(self.view.snp.bottom)
-            make.leading.equalTo(self.view.snp.leading)
-
-            make.height.equalTo(self.view.bounds.height)
-            make.width.equalTo(self.view.bounds.width)
+            make.top.trailing.bottom.leading.equalTo(self.view)
+            make.width.height.equalTo(self.view)
         }
 
         if let path = Bundle.main.path(forResource: "offers", ofType: "json") {
@@ -63,9 +65,8 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "offerCell",
                                                       for: indexPath) as! OffersCollectionViewCell
 
-        cell.backgroundColor = UIColor.magenta
         cell.accessibilityIdentifier = "offerCell-\(indexPath.row)"
-        cell.descriptionLabelText = offers[indexPath.row].description
+        cell.valueLabelText = offers[indexPath.row].currentValue
         cell.nameLabelText = offers[indexPath.row].name
         if offers[indexPath.row].favorited {
             cell.favoriteCell()
@@ -73,10 +74,9 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
             cell.unfavoriteCell()
         }
 
-        if let urlString = offers[indexPath.row].url {
-            if let url = URL(string: urlString) {
-                cell.imageView.kf.setImage(with: url)
-            }
+        if let urlString = offers[indexPath.row].url, let url = URL(string: urlString) {
+            cell.imageView.kf.indicatorType = .activity
+            cell.imageView.kf.setImage(with: url)
         }
 
         return cell
@@ -89,7 +89,6 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 1
     }
-
 }
 
 extension OffersViewController: UICollectionViewDelegate {

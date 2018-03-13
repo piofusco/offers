@@ -7,10 +7,12 @@ import UIKit
 
 enum Colors {
     case gray // #F1F2F5
+    case darkGray // #4A4A4A
 
     func color() -> UIColor {
         switch self {
             case .gray: return UIColor(rgb: 0xF1F2F5)
+            case .darkGray: return UIColor(rgb: 0x4A4A4A)
         }
     }
 }

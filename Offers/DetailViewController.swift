@@ -6,19 +6,19 @@
 import UIKit
 
 import SnapKit
+import Kingfisher
 
 protocol Favoritable {
     func offerFavoritedWasToggled()
 }
 
 class DetailViewController: UIViewController {
-
     var nameLabel = UILabel()
     var descriptionLabel = UILabel()
     var termsLabel = UILabel()
     var currentValueLabel = UILabel()
 
-    var image = UIImageView()
+    var imageView = UIImageView()
     var favoriteLabel = UILabel()
     var favoriteSwitch = UISwitch()
 
@@ -36,6 +36,10 @@ class DetailViewController: UIViewController {
             termsLabel.text = "Terms: \(offer.terms)"
             currentValueLabel.text = "Current value: \(offer.currentValue)"
             favoriteSwitch.isOn = offer.favorited
+            if let urlString = offer.url, let url = URL(string: urlString) {
+                imageView.kf.indicatorType = .activity
+                imageView.kf.setImage(with: url)
+            }
         } else {
             nameLabel.text = "Name NA"
             descriptionLabel.text = "Description NA"
@@ -48,7 +52,7 @@ class DetailViewController: UIViewController {
         view.addSubview(nameLabel)
         nameLabel.snp.makeConstraints { (make) -> Void in
             make.leading.equalTo(self.view.snp.leading).inset(10)
-            make.top.equalTo(self.view.snp.top).inset(76)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(10)
             make.trailing.equalTo(self.view.snp.trailing).inset(10)
         }
 
@@ -97,13 +101,13 @@ class DetailViewController: UIViewController {
             make.trailing.equalTo(self.view.snp.trailing).inset(10)
         }
 
-        image.backgroundColor = UIColor.gray
-        view.addSubview(image)
-        image.snp.makeConstraints { (make) -> Void in
+        imageView.contentMode = .scaleAspectFit
+        view.addSubview(imageView)
+        imageView.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(self.favoriteLabel.snp.bottom).offset(20)
             make.trailing.equalTo(self.view.snp.trailing).inset(10)
             make.leading.equalTo(self.view.snp.leading).inset(10)
-            make.bottom.equalTo(self.view.snp.bottom).inset(10)
+            make.height.equalTo(self.view.snp.width).offset(30)
         }
     }
 
