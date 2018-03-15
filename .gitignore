@@ -11,3 +11,6 @@
 *.perspectivev3
 !default.perspectivev3
 xcuserdata/
+
+fastlane/report.xml
+fastlane/test_output/
