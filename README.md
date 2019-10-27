@@ -14,4 +14,3 @@ Dependencies
 3. Fastlane (https://fastlane.tools/) - app automation
 4. Snapkit (https://github.com/SnapKit/SnapKit) - DSL for programmatic views
 5. Carthage (https://github.com/Carthage/Carthage) - decentralized dependency manager
-6. Freddy (https://github.com/bignerdranch/Freddy) - JSON parser
