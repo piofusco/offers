@@ -12,5 +12,7 @@
 !default.perspectivev3
 xcuserdata/
 
+Carthage/
+
 fastlane/report.xml
 fastlane/test_output/
