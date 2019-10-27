@@ -12,6 +12,8 @@
 !default.perspectivev3
 xcuserdata/
 
+Offers.xcodeproj/project.xcworkspace/xcuserdata/
+
 Carthage/
 
 fastlane/report.xml
