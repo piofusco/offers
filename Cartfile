@@ -1,3 +1,2 @@
-github "bignerdranch/Freddy" ~> 3.0
 github "SnapKit/SnapKit" ~> 4.0.0
 github "onevcat/Kingfisher" ~> 4.0

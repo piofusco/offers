@@ -9,7 +9,6 @@
 import UIKit
 
 import SnapKit
-import Freddy
 import Kingfisher
 
 class OffersViewController: UIViewController, UICollectionViewDataSource {
@@ -45,11 +44,11 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
         if let path = Bundle.main.path(forResource: "offers", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let json = try JSON(data: data)
-                offers = try json.getArray().map(Offer.init)
+                let decoder = JSONDecoder()
+                offers = try decoder.decode([Offer].self, from: data)
                 collectionView.reloadData()
-            } catch {
-                print("Uh oh")
+            } catch let parsingError {
+                print("Error", parsingError)
             }
         }
     }

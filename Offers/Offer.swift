@@ -5,9 +5,7 @@
 
 import Foundation
 
-import Freddy
-
-struct Offer {
+struct Offer: Codable {
     let name: String
     let url: String?
     let description: String
@@ -17,12 +15,12 @@ struct Offer {
     var favorited = false
 }
 
-extension Offer: JSONDecodable {
-    public init(json value: JSON) throws {
-        name = try value.getString(at: "name")
-        url = try value.getString(at: "url", alongPath: .nullBecomesNil)
-        description = try value.getString(at: "description")
-        terms = try value.getString(at: "terms")
-        currentValue = try value.getString(at: "current_value")
+extension Offer {
+    enum CodingKeys: String, CodingKey {
+        case name
+        case url
+        case description
+        case terms
+        case currentValue = "current_value"
     }
 }
