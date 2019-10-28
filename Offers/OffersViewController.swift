@@ -13,7 +13,6 @@ import Kingfisher
 
 class OffersViewController: UIViewController, UICollectionViewDataSource {
     private let offersService: OffersService
-    private var offers = [] as [Offer]
 
     private var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -33,7 +32,6 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
 
     init(offersService: OffersService) {
         self.offersService = offersService
-        self.offers = []
 
         super.init(nibName: nil, bundle: nil)
     }
@@ -52,8 +50,6 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
             make.top.trailing.bottom.leading.equalTo(self.view)
             make.width.height.equalTo(self.view)
         }
-
-        offers = offersService.getOffers()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
@@ -62,15 +58,15 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
                                                       for: indexPath) as! OffersCollectionViewCell
 
         cell.accessibilityIdentifier = "offerCell-\(indexPath.row)"
-        cell.valueLabelText = offers[indexPath.row].currentValue
-        cell.nameLabelText = offers[indexPath.row].name
-        if offers[indexPath.row].favorited {
+        cell.valueLabelText = offersService.getOffers()[indexPath.row].currentValue
+        cell.nameLabelText = offersService.getOffers()[indexPath.row].name
+        if offersService.getOffers()[indexPath.row].favorited {
             cell.favoriteCell()
         } else {
             cell.unfavoriteCell()
         }
 
-        if let urlString = offers[indexPath.row].url, let url = URL(string: urlString) {
+        if let urlString = offersService.getOffers()[indexPath.row].url, let url = URL(string: urlString) {
             cell.imageView.kf.indicatorType = .activity
             cell.imageView.kf.setImage(with: url)
         }
@@ -79,11 +75,7 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        offers.count
-    }
-
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        1
+        offersService.getOffers().count
     }
 
     required init?(coder aDecoder: NSCoder) {
@@ -93,9 +85,9 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
 
 extension OffersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let detailViewController = DetailViewController()
+        let selectedOffer = offersService.getOffers()[indexPath.row]
+        let detailViewController = OfferDetailViewController(offer: selectedOffer)
         detailViewController.delegate = self
-        detailViewController.offer = offers[indexPath.row]
         detailViewController.navigationItem.title = "Offer \(indexPath.row + 1)"
 
         navigationController?.pushViewController(detailViewController, animated: true)
@@ -103,9 +95,9 @@ extension OffersViewController: UICollectionViewDelegate {
 }
 
 extension OffersViewController: Favoritable {
-    func offerFavoritedWasToggled() {
-        if let selectedOfferIndex = self.collectionView.indexPathsForSelectedItems?[0].row {
-            offers[selectedOfferIndex].favorited = !offers[selectedOfferIndex].favorited
+    func didFavoriteOffer(withId id: String) {
+        if let _ = self.collectionView.indexPathsForSelectedItems?[0].row {
+            offersService.toggleFavoriteOffer(forId: id)
             collectionView.reloadData()
         }
     }

@@ -9,42 +9,40 @@ import SnapKit
 import Kingfisher
 
 protocol Favoritable {
-    func offerFavoritedWasToggled()
+    func didFavoriteOffer(withId id: String)
 }
 
-class DetailViewController: UIViewController {
-    var nameLabel = UILabel()
-    var descriptionLabel = UILabel()
-    var termsLabel = UILabel()
-    var currentValueLabel = UILabel()
-
-    var imageView = UIImageView()
-    var favoriteLabel = UILabel()
-    var favoriteSwitch = UISwitch()
+class OfferDetailViewController: UIViewController {
+    private var nameLabel = UILabel()
+    private var descriptionLabel = UILabel()
+    private var termsLabel = UILabel()
+    private var currentValueLabel = UILabel()
+    private var imageView = UIImageView()
+    private var favoriteLabel = UILabel()
+    private var favoriteSwitch = UISwitch()
 
     var delegate: Favoritable?
-    var offer: Offer?
+    private var offer: Offer
+
+    init(offer: Offer) {
+        self.offer = offer
+
+        super.init(nibName: nil, bundle: nil)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = UIColor.white
 
-        if let offer = offer {
-            nameLabel.text = "Name: \(offer.name)"
-            descriptionLabel.text = "Description: \(offer.description)"
-            termsLabel.text = "Terms: \(offer.terms)"
-            currentValueLabel.text = "Current value: \(offer.currentValue)"
-            favoriteSwitch.isOn = offer.favorited
-            if let urlString = offer.url, let url = URL(string: urlString) {
-                imageView.kf.indicatorType = .activity
-                imageView.kf.setImage(with: url)
-            }
-        } else {
-            nameLabel.text = "Name NA"
-            descriptionLabel.text = "Description NA"
-            termsLabel.text = "Terms NA"
-            currentValueLabel.text = "Currentvalue NA"
+        nameLabel.text = "Name: \(offer.name)"
+        descriptionLabel.text = "Description: \(offer.description)"
+        termsLabel.text = "Terms: \(offer.terms)"
+        currentValueLabel.text = "Current value: \(offer.currentValue)"
+        favoriteSwitch.isOn = offer.favorited
+        if let urlString = offer.url, let url = URL(string: urlString) {
+            imageView.kf.indicatorType = .activity
+            imageView.kf.setImage(with: url)
         }
 
         nameLabel.font = UIFont.systemFont(ofSize: 15)
@@ -93,8 +91,11 @@ class DetailViewController: UIViewController {
         }
 
         favoriteSwitch.isUserInteractionEnabled = true
-        favoriteSwitch.addTarget(self, action: #selector(DetailViewController.favoriteSwitchHasChanged),
-                                 for: .valueChanged)
+        favoriteSwitch.addTarget(
+            self,
+            action: #selector(OfferDetailViewController.favoriteSwitchHasChanged),
+            for: .valueChanged
+        )
         view.addSubview(favoriteSwitch)
         favoriteSwitch.snp.makeConstraints { (make) -> Void in
             make.centerY.equalTo(favoriteLabel.snp.centerY)
@@ -111,13 +112,11 @@ class DetailViewController: UIViewController {
         }
     }
 
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        self.navigationController?.isNavigationBarHidden = false
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) is not supported")
     }
 
     @objc func favoriteSwitchHasChanged() {
-        delegate!.offerFavoritedWasToggled()
+        delegate?.didFavoriteOffer(withId: offer.id)
     }
 }

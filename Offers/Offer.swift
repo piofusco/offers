@@ -6,6 +6,7 @@
 import Foundation
 
 struct Offer: Codable {
+    let id: String
     let name: String
     let url: String?
     let description: String
@@ -17,6 +18,7 @@ struct Offer: Codable {
 
 extension Offer {
     enum CodingKeys: String, CodingKey {
+        case id
         case name
         case url
         case description
