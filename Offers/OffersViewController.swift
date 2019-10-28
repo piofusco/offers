@@ -12,22 +12,34 @@ import SnapKit
 import Kingfisher
 
 class OffersViewController: UIViewController, UICollectionViewDataSource {
-
-    var collectionView: UICollectionView!
+    private let offersService: OffersService
     private var offers = [] as [Offer]
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
+    private var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         let margin = CGFloat(12)
         let interimItemSpacing = CGFloat(8)
+
         layout.sectionInset = UIEdgeInsets(top: 0, left: margin, bottom: 0, right: margin)
         let width = (UIScreen.main.bounds.width - (margin * 2) - interimItemSpacing) / 2
         let height = width * 0.85
         layout.itemSize = CGSize(width: width, height: height)
         layout.minimumInteritemSpacing = interimItemSpacing
         layout.minimumLineSpacing = 24
+
+        return layout
+    }()
+    var collectionView: UICollectionView!
+
+    init(offersService: OffersService) {
+        self.offersService = offersService
+        self.offers = []
+
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
 
         collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         collectionView.dataSource = self
@@ -41,26 +53,11 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
             make.width.height.equalTo(self.view)
         }
 
-        if let path = Bundle.main.path(forResource: "offers", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let decoder = JSONDecoder()
-                offers = try decoder.decode([Offer].self, from: data)
-                collectionView.reloadData()
-            } catch let parsingError {
-                print("Error", parsingError)
-            }
-        }
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        self.navigationController?.isNavigationBarHidden = true
+        offers = offersService.getOffers()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
-                    -> UICollectionViewCell {
+            -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "offerCell",
                                                       for: indexPath) as! OffersCollectionViewCell
 
@@ -82,11 +79,15 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return offers.count
+        offers.count
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 1
+        1
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) is not supported")
     }
 }
 

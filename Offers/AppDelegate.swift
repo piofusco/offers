@@ -10,14 +10,17 @@ import UIKit
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
-
     var window: UIWindow?
 
     func application(_ application: UIApplication,
                      didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let navigationController = UINavigationController(rootViewController: OffersViewController())
-
         window = UIWindow(frame: UIScreen.main.bounds)
+
+        let offersService = OffersServiceImplementation()
+        let navigationController = UINavigationController(
+            rootViewController: OffersViewController(offersService: offersService)
+        )
+
         window!.rootViewController = navigationController
         window!.makeKeyAndVisible()
 

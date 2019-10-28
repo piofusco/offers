@@ -12,6 +12,9 @@
 		B5B9C4D2692C5319BE2A5495 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C9480C6FF0BA196E90E4 /* DetailViewController.swift */; };
 		B5B9C56000BB97C046D38882 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C650EAD7B20CF5092EA0 /* Colors.swift */; };
 		B5B9C86122C3080C8C0C4C79 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CA7CB520362924823BB0 /* Offer.swift */; };
+		B5B9CD2FA292DBE06EEC524F /* OffersServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C61857AF8A5D51A382BE /* OffersServiceSpec.swift */; };
+		B5B9CEBF5E20C0438EB9FE19 /* OffersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C3100ECE17F80A0723B6 /* OffersService.swift */; };
+		B5B9CF490D357A336B5F6020 /* MockOffersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C1C04236A6E926F001E3 /* MockOffersService.swift */; };
 		F31196E32045CE9C00D9E2F9 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31196E22045CE9C00D9E2F9 /* Kingfisher.framework */; };
 		F38458C320250143003C32FF /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38458C120250143003C32FF /* Quick.framework */; };
 		F38458C420250143003C32FF /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38458C220250143003C32FF /* Nimble.framework */; };
@@ -42,6 +45,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B5B9C1C04236A6E926F001E3 /* MockOffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockOffersService.swift; path = Mocks/MockOffersService.swift; sourceTree = "<group>"; };
+		B5B9C3100ECE17F80A0723B6 /* OffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersService.swift; sourceTree = "<group>"; };
+		B5B9C61857AF8A5D51A382BE /* OffersServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersServiceSpec.swift; sourceTree = "<group>"; };
 		B5B9C650EAD7B20CF5092EA0 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B5B9C9480C6FF0BA196E90E4 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		B5B9CA7CB520362924823BB0 /* Offer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
@@ -129,6 +135,7 @@
 				B5B9CBA6C790EDF169B09572 /* offers.json */,
 				B5B9CA7CB520362924823BB0 /* Offer.swift */,
 				B5B9C9480C6FF0BA196E90E4 /* DetailViewController.swift */,
+				B5B9C3100ECE17F80A0723B6 /* OffersService.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -138,6 +145,8 @@
 			children = (
 				F39F3AD72022E722004286C6 /* OffersViewControllerSpec.swift */,
 				F39F3AD92022E722004286C6 /* Info.plist */,
+				B5B9C1C04236A6E926F001E3 /* MockOffersService.swift */,
+				B5B9C61857AF8A5D51A382BE /* OffersServiceSpec.swift */,
 			);
 			path = OffersTests;
 			sourceTree = "<group>";
@@ -345,6 +354,7 @@
 				B5B9C56000BB97C046D38882 /* Colors.swift in Sources */,
 				B5B9C86122C3080C8C0C4C79 /* Offer.swift in Sources */,
 				B5B9C4D2692C5319BE2A5495 /* DetailViewController.swift in Sources */,
+				B5B9CEBF5E20C0438EB9FE19 /* OffersService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +363,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				F39F3AD82022E722004286C6 /* OffersViewControllerSpec.swift in Sources */,
+				B5B9CF490D357A336B5F6020 /* MockOffersService.swift in Sources */,
+				B5B9CD2FA292DBE06EEC524F /* OffersServiceSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
