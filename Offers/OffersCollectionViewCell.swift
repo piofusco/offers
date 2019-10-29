@@ -15,6 +15,7 @@ class OffersCollectionViewCell: UICollectionViewCell {
         view.layer.cornerRadius = 5
         return view
     }()
+
     var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
@@ -23,48 +24,23 @@ class OffersCollectionViewCell: UICollectionViewCell {
 
     private var valueLabel: UILabel = {
         let label = UILabel()
-        label.text = "$1.00 cash back"
         label.font = Fonts.demiBold.font(withSize: 12)
         label.textColor = Colors.darkGray.color()
         return label
     }()
 
-    private var nameLabel: UILabel = {
+    private var descriptionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Description"
         label.font = UIFont(name: "AvenirNext-Regular", size: 11)
         label.textColor = Colors.darkGray.color()
         return label
     }()
 
-    private var favoritedLabel: UILabel = {
-        let label = UILabel()
-        label.isHidden = true
-        label.text = "FAVORITED"
-        label.numberOfLines = 0
-        label.font = UIFont(name: "AvenirNext-Regular", size: 30)
-        label.textColor = UIColor.red
-        label.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi) / 4);
-        return label
+    private var favoritedIcon: UIImageView = {
+        let image = UIImageView(image: Images.favoritedFilled.image, highlightedImage: Images.favorited.image)
+        image.contentMode = .scaleAspectFit
+        return image
     }()
-
-    var valueLabelText: String? {
-        set {
-            valueLabel.text = newValue
-        }
-        get {
-            valueLabel.text
-        }
-    }
-
-    var nameLabelText: String? {
-        set {
-            nameLabel.text = newValue
-        }
-        get {
-            nameLabel.text
-        }
-    }
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -73,12 +49,18 @@ class OffersCollectionViewCell: UICollectionViewCell {
         setupConstraints()
     }
 
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+}
+
+extension OffersCollectionViewCell {
     private func setupViews() {
         contentView.addSubview(imageBackDrop)
         imageBackDrop.addSubview(imageView)
         contentView.addSubview(valueLabel)
-        contentView.addSubview(nameLabel)
-        contentView.addSubview(favoritedLabel)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(favoritedIcon)
     }
 
     private func setupConstraints() {
@@ -94,30 +76,28 @@ class OffersCollectionViewCell: UICollectionViewCell {
         }
 
         valueLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.trailing.equalTo(contentView)
+            make.leading.equalTo(contentView)
             make.top.equalTo(imageBackDrop.snp.bottom).offset(8)
         }
 
-        nameLabel.snp.makeConstraints { (make) -> Void in
+        favoritedIcon.snp.makeConstraints { (make) -> Void in
+            make.trailing.equalTo(contentView)
+            make.center.equalTo(valueLabel.snp.center)
+            make.height.width.equalTo(15)
+        }
+
+        descriptionLabel.snp.makeConstraints { (make) -> Void in
             make.top.equalTo(valueLabel.snp.bottom).offset(3)
             make.leading.trailing.equalTo(contentView)
         }
-
-        favoritedLabel.snp.makeConstraints { (make) -> Void in
-            make.center.equalTo(contentView)
-        }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension OffersCollectionViewCell {
     func configureFor(offer: Offer) {
-        valueLabelText = offer.currentValue
-        nameLabelText = offer.name
-        favoritedLabel.isHidden = !offer.favorited
+        valueLabel.text = offer.currentValue
+        descriptionLabel.text = offer.name
+        favoritedIcon.isHighlighted = !offer.favorited
 
         if let urlString = offer.url, let url = URL(string: urlString) {
             imageView.kf.indicatorType = .activity

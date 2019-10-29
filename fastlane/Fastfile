@@ -18,7 +18,8 @@ platform :ios do
       project: "Offers.xcodeproj",
       devices: ["iPhone 6s"],
       clean: true,
-      scheme: "OffersTests"
+      scheme: "OffersTests",
+      code_coverage: true
     )
   end
 

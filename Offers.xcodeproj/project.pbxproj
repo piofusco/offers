@@ -14,6 +14,7 @@
 		B5B9C86122C3080C8C0C4C79 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CA7CB520362924823BB0 /* Offer.swift */; };
 		B5B9C8938831C68C4D90C99A /* OfferDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C8AD4F6BF23D077C2518 /* OfferDetailViewControllerSpec.swift */; };
 		B5B9C991A0DD13CE2A572328 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C01FC29B29DF765EBD25 /* Fonts.swift */; };
+		B5B9CD1DB623FB6D85E9D319 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C7F5CAB8E1708EDF04AA /* Images.swift */; };
 		B5B9CD2FA292DBE06EEC524F /* OffersServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C61857AF8A5D51A382BE /* OffersServiceSpec.swift */; };
 		B5B9CE1B24ED9B54DCCC06BA /* MockFavoritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C85F572EB31A21282B63 /* MockFavoritable.swift */; };
 		B5B9CEBF5E20C0438EB9FE19 /* OffersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C3100ECE17F80A0723B6 /* OffersService.swift */; };
@@ -52,6 +53,7 @@
 		B5B9C1C04236A6E926F001E3 /* MockOffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockOffersService.swift; path = Mocks/MockOffersService.swift; sourceTree = "<group>"; };
 		B5B9C3100ECE17F80A0723B6 /* OffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersService.swift; sourceTree = "<group>"; };
 		B5B9C61857AF8A5D51A382BE /* OffersServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersServiceSpec.swift; sourceTree = "<group>"; };
+		B5B9C7F5CAB8E1708EDF04AA /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Images.swift; path = Extensions/Images.swift; sourceTree = "<group>"; };
 		B5B9C85F572EB31A21282B63 /* MockFavoritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockFavoritable.swift; path = Mocks/MockFavoritable.swift; sourceTree = "<group>"; };
 		B5B9C8AD4F6BF23D077C2518 /* OfferDetailViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewControllerSpec.swift; sourceTree = "<group>"; };
 		B5B9C9480C6FF0BA196E90E4 /* OfferDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 				B5B9C3100ECE17F80A0723B6 /* OffersService.swift */,
 				B5B9CFC79D4261DA8712F667 /* Colors.swift */,
 				B5B9C01FC29B29DF765EBD25 /* Fonts.swift */,
+				B5B9C7F5CAB8E1708EDF04AA /* Images.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -261,6 +264,7 @@
 					};
 					F39F3ADD2022E722004286C6 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1110;
 						ProvisioningStyle = Automatic;
 						TestTargetID = F39F3ABE2022E722004286C6;
 					};
@@ -365,6 +369,7 @@
 				B5B9CEBF5E20C0438EB9FE19 /* OffersService.swift in Sources */,
 				B5B9C202F823943B5E194A53 /* Colors.swift in Sources */,
 				B5B9C991A0DD13CE2A572328 /* Fonts.swift in Sources */,
+				B5B9CD1DB623FB6D85E9D319 /* Images.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -617,7 +622,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.piofusco.offers.OffersUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Offers;
 			};
@@ -632,7 +637,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.piofusco.offers.OffersUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = Offers;
 			};

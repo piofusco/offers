@@ -19,29 +19,34 @@ class OfferDetailViewController: UIViewController {
         label.numberOfLines = 0
         return label
     }()
+
     private var descriptionLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         return label
     }()
+
     private var termsLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         return label
     }()
+
     private var currentValueLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
         label.numberOfLines = 0
         return label
     }()
+
     private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
         return imageView
     }()
+
     private var favoriteLabel: UILabel = {
         let label = UILabel()
         label.font = UIFont.systemFont(ofSize: 15)
@@ -49,10 +54,12 @@ class OfferDetailViewController: UIViewController {
         label.text = "Favorited"
         return label
     }()
-    private var favoriteSwitch: UISwitch = {
-        let favoriteSwitch = UISwitch()
-        favoriteSwitch.isUserInteractionEnabled = true
-        return favoriteSwitch
+
+    private var favoriteButton: UIButton = {
+        let button = UIButton()
+        button.setImage(Images.favorited.image, for: .normal)
+        button.setImage(Images.favoritedFilled.image, for: .selected)
+        return button
     }()
 
     var delegate: Favoritable?
@@ -71,10 +78,10 @@ class OfferDetailViewController: UIViewController {
         setupConstraints()
         setupForOffer()
 
-        favoriteSwitch.addTarget(
+        favoriteButton.addTarget(
             self,
-            action: #selector(OfferDetailViewController.favoriteSwitchHasChanged),
-            for: .valueChanged
+            action: #selector(OfferDetailViewController.favoriteButtonTapped),
+            for: .touchUpInside
         )
     }
 
@@ -84,8 +91,24 @@ class OfferDetailViewController: UIViewController {
 }
 
 extension OfferDetailViewController {
-    @objc func favoriteSwitchHasChanged() {
+    @objc func favoriteButtonTapped(sender: UIButton) {
+        sender.isSelected = !sender.isSelected
         delegate?.didFavoriteOffer(withId: offer.id)
+    }
+}
+
+extension OfferDetailViewController {
+    private func setupForOffer() {
+        nameLabel.text = "Name: \(offer.name)"
+        descriptionLabel.text = "Description: \(offer.description)"
+        termsLabel.text = "Terms: \(offer.terms)"
+        currentValueLabel.text = "Current value: \(offer.currentValue)"
+        favoriteButton.isSelected = offer.favorited
+        favoriteButton.accessibilityIdentifier = "FavoriteButton"
+        if let urlString = offer.url, let url = URL(string: urlString) {
+            imageView.kf.indicatorType = .activity
+            imageView.kf.setImage(with: url)
+        }
     }
 }
 
@@ -97,7 +120,7 @@ extension OfferDetailViewController {
         view.addSubview(termsLabel)
         view.addSubview(currentValueLabel)
         view.addSubview(favoriteLabel)
-        view.addSubview(favoriteSwitch)
+        view.addSubview(favoriteButton)
         view.addSubview(imageView)
     }
 
@@ -131,7 +154,7 @@ extension OfferDetailViewController {
             make.top.equalTo(self.currentValueLabel.snp.bottom).offset(20)
         }
 
-        favoriteSwitch.snp.makeConstraints { (make) -> Void in
+        favoriteButton.snp.makeConstraints { (make) -> Void in
             make.centerY.equalTo(favoriteLabel.snp.centerY)
             make.trailing.equalTo(self.view.snp.trailing).inset(10)
         }
@@ -141,18 +164,6 @@ extension OfferDetailViewController {
             make.trailing.equalTo(self.view.snp.trailing).inset(10)
             make.leading.equalTo(self.view.snp.leading).inset(10)
             make.height.equalTo(self.view.snp.width).offset(30)
-        }
-    }
-
-    private func setupForOffer() {
-        nameLabel.text = "Name: \(offer.name)"
-        descriptionLabel.text = "Description: \(offer.description)"
-        termsLabel.text = "Terms: \(offer.terms)"
-        currentValueLabel.text = "Current value: \(offer.currentValue)"
-        favoriteSwitch.isOn = offer.favorited
-        if let urlString = offer.url, let url = URL(string: urlString) {
-            imageView.kf.indicatorType = .activity
-            imageView.kf.setImage(with: url)
         }
     }
 }

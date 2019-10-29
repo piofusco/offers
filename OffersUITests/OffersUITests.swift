@@ -33,25 +33,24 @@ class OffersUITests: XCTestCase {
                 "Sponges for any variety, 2 ct. pack or larger."].exists)
         XCTAssertTrue(application.staticTexts["Current value: $0.75 Cash Back"].exists)
 
-        let offerOneFavoritedSwitch = application.switches.element(boundBy: 0)
-        XCTAssertTrue(offerOneFavoritedSwitch.exists)
-        var offerOneIsFavorited = (offerOneFavoritedSwitch.value as! String).toBool()
-        XCTAssertFalse(offerOneIsFavorited)
+        let offerOneFavoritedButton = application.buttons["FavoriteButton"]
+        XCTAssertTrue(offerOneFavoritedButton.exists)
+        XCTAssertFalse(offerOneFavoritedButton.isSelected)
 
-        offerOneFavoritedSwitch.tap()
-        offerOneFavoritedSwitch.tap()
-        offerOneFavoritedSwitch.tap()
+        offerOneFavoritedButton.tap()
+        offerOneFavoritedButton.tap()
+        offerOneFavoritedButton.tap()
         application.buttons["Back"].tap()
 
-        XCTAssertTrue(collectionCell1.staticTexts["FAVORITED"].exists)
+        XCTAssertTrue(collectionCell1.images["FavoritedFilled"].exists)
+
         collectionCell1.tap()
-        offerOneIsFavorited = (offerOneFavoritedSwitch.value as! String).toBool()
-        XCTAssertTrue(offerOneIsFavorited)
+        XCTAssertTrue(application.buttons["FavoriteButton"].isSelected)
 
-        offerOneFavoritedSwitch.tap()
+        offerOneFavoritedButton.tap()
         application.buttons["Back"].tap()
 
-        XCTAssertFalse(collectionCell1.staticTexts["FAVORITED"].exists)
+        XCTAssertFalse(collectionCell1.images["Favorited"].exists)
 
         let collectionCell3 = application.collectionViews.cells["offerCell-2"]
         XCTAssertTrue(collectionCell3.exists)
@@ -66,27 +65,15 @@ class OffersUITests: XCTestCase {
                 "variety, any size."].exists)
         XCTAssertTrue(application.staticTexts["Current value: $0.50 Cash Back"].exists)
 
-        let offerTwoFavoritedSwitch = application.switches.element(boundBy: 0)
-        XCTAssertTrue(offerTwoFavoritedSwitch.exists)
-        var offerTwoIsFavorited = (offerTwoFavoritedSwitch.value as! String).toBool()
-        XCTAssertFalse(offerTwoIsFavorited)
+        let offerTwoFavoritedButton = application.buttons["FavoriteButton"]
+        XCTAssertTrue(offerTwoFavoritedButton.exists)
+        XCTAssertFalse(offerTwoFavoritedButton.isSelected)
 
-        offerTwoFavoritedSwitch.tap()
+        offerTwoFavoritedButton.tap()
         application.buttons["Back"].tap()
 
-        XCTAssertTrue(collectionCell3.staticTexts["FAVORITED"].exists)
+        XCTAssertTrue(collectionCell3.images["FavoritedFilled"].exists)
         collectionCell3.tap()
-        offerTwoIsFavorited = (offerTwoFavoritedSwitch.value as! String).toBool()
-        XCTAssertTrue(offerTwoIsFavorited)
-    }
-}
-
-extension String {
-    func toBool() -> Bool {
-        switch self {
-            case "True", "true", "yes", "1": return true
-            case "False", "false", "no", "0": return false
-            default: return false
-        }
+        XCTAssertTrue(offerTwoFavoritedButton.isSelected)
     }
 }

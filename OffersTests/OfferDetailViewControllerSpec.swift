@@ -33,7 +33,7 @@ class OfferDetailViewControllerSpec: QuickSpec {
                     window.rootViewController = subject
                     subject.view.layoutSubviews()
 
-                    subject.favoriteSwitchHasChanged()
+                    subject.favoriteButtonTapped(sender: UIButton())
 
                     expect(mockFavoritableDelegate.lastFavoritedId).to(equal(expetedId))
                 }
