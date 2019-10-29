@@ -13,13 +13,47 @@ protocol Favoritable {
 }
 
 class OfferDetailViewController: UIViewController {
-    private var nameLabel = UILabel()
-    private var descriptionLabel = UILabel()
-    private var termsLabel = UILabel()
-    private var currentValueLabel = UILabel()
-    private var imageView = UIImageView()
-    private var favoriteLabel = UILabel()
-    private var favoriteSwitch = UISwitch()
+    private var nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
+        return label
+    }()
+    private var descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
+        return label
+    }()
+    private var termsLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
+        return label
+    }()
+    private var currentValueLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
+        return label
+    }()
+    private var imageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        return imageView
+    }()
+    private var favoriteLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont.systemFont(ofSize: 15)
+        label.numberOfLines = 0
+        label.text = "Favorited"
+        return label
+    }()
+    private var favoriteSwitch: UISwitch = {
+        let favoriteSwitch = UISwitch()
+        favoriteSwitch.isUserInteractionEnabled = true
+        return favoriteSwitch
+    }()
 
     var delegate: Favoritable?
     private var offer: Offer
@@ -33,8 +67,84 @@ class OfferDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = UIColor.white
+        setupViews()
+        setupConstraints()
+        setupForOffer()
 
+        favoriteSwitch.addTarget(
+            self,
+            action: #selector(OfferDetailViewController.favoriteSwitchHasChanged),
+            for: .valueChanged
+        )
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) is not supported")
+    }
+}
+
+extension OfferDetailViewController {
+    @objc func favoriteSwitchHasChanged() {
+        delegate?.didFavoriteOffer(withId: offer.id)
+    }
+}
+
+extension OfferDetailViewController {
+    private func setupViews() {
+        view.backgroundColor = UIColor.white
+        view.addSubview(nameLabel)
+        view.addSubview(descriptionLabel)
+        view.addSubview(termsLabel)
+        view.addSubview(currentValueLabel)
+        view.addSubview(favoriteLabel)
+        view.addSubview(favoriteSwitch)
+        view.addSubview(imageView)
+    }
+
+    private func setupConstraints() {
+        nameLabel.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(self.view.snp.leading).inset(10)
+            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(10)
+            make.trailing.equalTo(self.view.snp.trailing).inset(10)
+        }
+
+        descriptionLabel.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(self.view.snp.leading).inset(10)
+            make.top.equalTo(self.nameLabel.snp.bottom).offset(5)
+            make.trailing.equalTo(self.view.snp.trailing).inset(10)
+        }
+
+        termsLabel.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(self.view.snp.leading).inset(10)
+            make.top.equalTo(self.descriptionLabel.snp.bottom).offset(5)
+            make.trailing.equalTo(self.view.snp.trailing).inset(10)
+        }
+
+        currentValueLabel.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(self.view.snp.leading).inset(10)
+            make.top.equalTo(self.termsLabel.snp.bottom).offset(5)
+            make.trailing.equalTo(self.view.snp.trailing).inset(10)
+        }
+
+        favoriteLabel.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(self.view.snp.leading).inset(10)
+            make.top.equalTo(self.currentValueLabel.snp.bottom).offset(20)
+        }
+
+        favoriteSwitch.snp.makeConstraints { (make) -> Void in
+            make.centerY.equalTo(favoriteLabel.snp.centerY)
+            make.trailing.equalTo(self.view.snp.trailing).inset(10)
+        }
+
+        imageView.snp.makeConstraints { (make) -> Void in
+            make.top.equalTo(self.favoriteLabel.snp.bottom).offset(20)
+            make.trailing.equalTo(self.view.snp.trailing).inset(10)
+            make.leading.equalTo(self.view.snp.leading).inset(10)
+            make.height.equalTo(self.view.snp.width).offset(30)
+        }
+    }
+
+    private func setupForOffer() {
         nameLabel.text = "Name: \(offer.name)"
         descriptionLabel.text = "Description: \(offer.description)"
         termsLabel.text = "Terms: \(offer.terms)"
@@ -44,79 +154,5 @@ class OfferDetailViewController: UIViewController {
             imageView.kf.indicatorType = .activity
             imageView.kf.setImage(with: url)
         }
-
-        nameLabel.font = UIFont.systemFont(ofSize: 15)
-        nameLabel.numberOfLines = 0
-        view.addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(self.view.snp.leading).inset(10)
-            make.top.equalTo(self.view.safeAreaLayoutGuide.snp.top).offset(10)
-            make.trailing.equalTo(self.view.snp.trailing).inset(10)
-        }
-
-        descriptionLabel.font = UIFont.systemFont(ofSize: 15)
-        descriptionLabel.numberOfLines = 0
-        view.addSubview(descriptionLabel)
-        descriptionLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(self.view.snp.leading).inset(10)
-            make.top.equalTo(self.nameLabel.snp.bottom).offset(5)
-            make.trailing.equalTo(self.view.snp.trailing).inset(10)
-        }
-
-        termsLabel.font = UIFont.systemFont(ofSize: 15)
-        termsLabel.numberOfLines = 0
-        view.addSubview(termsLabel)
-        termsLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(self.view.snp.leading).inset(10)
-            make.top.equalTo(self.descriptionLabel.snp.bottom).offset(5)
-            make.trailing.equalTo(self.view.snp.trailing).inset(10)
-        }
-
-        currentValueLabel.font = UIFont.systemFont(ofSize: 15)
-        currentValueLabel.numberOfLines = 0
-        view.addSubview(currentValueLabel)
-        currentValueLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(self.view.snp.leading).inset(10)
-            make.top.equalTo(self.termsLabel.snp.bottom).offset(5)
-            make.trailing.equalTo(self.view.snp.trailing).inset(10)
-        }
-
-        favoriteLabel.font = UIFont.systemFont(ofSize: 15)
-        favoriteLabel.numberOfLines = 0
-        favoriteLabel.text = "Favorited"
-        view.addSubview(favoriteLabel)
-        favoriteLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(self.view.snp.leading).inset(10)
-            make.top.equalTo(self.currentValueLabel.snp.bottom).offset(20)
-        }
-
-        favoriteSwitch.isUserInteractionEnabled = true
-        favoriteSwitch.addTarget(
-            self,
-            action: #selector(OfferDetailViewController.favoriteSwitchHasChanged),
-            for: .valueChanged
-        )
-        view.addSubview(favoriteSwitch)
-        favoriteSwitch.snp.makeConstraints { (make) -> Void in
-            make.centerY.equalTo(favoriteLabel.snp.centerY)
-            make.trailing.equalTo(self.view.snp.trailing).inset(10)
-        }
-
-        imageView.contentMode = .scaleAspectFit
-        view.addSubview(imageView)
-        imageView.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(self.favoriteLabel.snp.bottom).offset(20)
-            make.trailing.equalTo(self.view.snp.trailing).inset(10)
-            make.leading.equalTo(self.view.snp.leading).inset(10)
-            make.height.equalTo(self.view.snp.width).offset(30)
-        }
-    }
-
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) is not supported")
-    }
-
-    @objc func favoriteSwitchHasChanged() {
-        delegate?.didFavoriteOffer(withId: offer.id)
     }
 }

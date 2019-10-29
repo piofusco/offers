@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		B5B9C072D5F9B7B62F48F509 /* OffersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */; };
+		B5B9C202F823943B5E194A53 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CFC79D4261DA8712F667 /* Colors.swift */; };
 		B5B9C2121E71C3A3233E49B0 /* offers.json in Resources */ = {isa = PBXBuildFile; fileRef = B5B9CBA6C790EDF169B09572 /* offers.json */; };
 		B5B9C4D2692C5319BE2A5495 /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C9480C6FF0BA196E90E4 /* OfferDetailViewController.swift */; };
-		B5B9C56000BB97C046D38882 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C650EAD7B20CF5092EA0 /* Colors.swift */; };
 		B5B9C86122C3080C8C0C4C79 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CA7CB520362924823BB0 /* Offer.swift */; };
 		B5B9C8938831C68C4D90C99A /* OfferDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C8AD4F6BF23D077C2518 /* OfferDetailViewControllerSpec.swift */; };
+		B5B9C991A0DD13CE2A572328 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C01FC29B29DF765EBD25 /* Fonts.swift */; };
 		B5B9CD2FA292DBE06EEC524F /* OffersServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C61857AF8A5D51A382BE /* OffersServiceSpec.swift */; };
 		B5B9CE1B24ED9B54DCCC06BA /* MockFavoritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C85F572EB31A21282B63 /* MockFavoritable.swift */; };
 		B5B9CEBF5E20C0438EB9FE19 /* OffersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C3100ECE17F80A0723B6 /* OffersService.swift */; };
@@ -47,16 +48,17 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B5B9C01FC29B29DF765EBD25 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fonts.swift; path = Extensions/Fonts.swift; sourceTree = "<group>"; };
 		B5B9C1C04236A6E926F001E3 /* MockOffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockOffersService.swift; path = Mocks/MockOffersService.swift; sourceTree = "<group>"; };
 		B5B9C3100ECE17F80A0723B6 /* OffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersService.swift; sourceTree = "<group>"; };
 		B5B9C61857AF8A5D51A382BE /* OffersServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersServiceSpec.swift; sourceTree = "<group>"; };
-		B5B9C650EAD7B20CF5092EA0 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		B5B9C85F572EB31A21282B63 /* MockFavoritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockFavoritable.swift; path = Mocks/MockFavoritable.swift; sourceTree = "<group>"; };
 		B5B9C8AD4F6BF23D077C2518 /* OfferDetailViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewControllerSpec.swift; sourceTree = "<group>"; };
 		B5B9C9480C6FF0BA196E90E4 /* OfferDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
 		B5B9CA7CB520362924823BB0 /* Offer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		B5B9CBA6C790EDF169B09572 /* offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = offers.json; sourceTree = "<group>"; };
 		B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5B9CFC79D4261DA8712F667 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = Extensions/Colors.swift; sourceTree = "<group>"; };
 		F31196E22045CE9C00D9E2F9 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		F38458C120250143003C32FF /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		F38458C220250143003C32FF /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
@@ -135,11 +137,12 @@
 				F39F3ACB2022E722004286C6 /* LaunchScreen.storyboard */,
 				F39F3ACE2022E722004286C6 /* Info.plist */,
 				B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */,
-				B5B9C650EAD7B20CF5092EA0 /* Colors.swift */,
 				B5B9CBA6C790EDF169B09572 /* offers.json */,
 				B5B9CA7CB520362924823BB0 /* Offer.swift */,
 				B5B9C9480C6FF0BA196E90E4 /* OfferDetailViewController.swift */,
 				B5B9C3100ECE17F80A0723B6 /* OffersService.swift */,
+				B5B9CFC79D4261DA8712F667 /* Colors.swift */,
+				B5B9C01FC29B29DF765EBD25 /* Fonts.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -357,10 +360,11 @@
 				F39F3AC52022E722004286C6 /* OffersViewController.swift in Sources */,
 				F39F3AC32022E722004286C6 /* AppDelegate.swift in Sources */,
 				B5B9C072D5F9B7B62F48F509 /* OffersCollectionViewCell.swift in Sources */,
-				B5B9C56000BB97C046D38882 /* Colors.swift in Sources */,
 				B5B9C86122C3080C8C0C4C79 /* Offer.swift in Sources */,
 				B5B9C4D2692C5319BE2A5495 /* OfferDetailViewController.swift in Sources */,
 				B5B9CEBF5E20C0438EB9FE19 /* OffersService.swift in Sources */,
+				B5B9C202F823943B5E194A53 /* Colors.swift in Sources */,
+				B5B9C991A0DD13CE2A572328 /* Fonts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

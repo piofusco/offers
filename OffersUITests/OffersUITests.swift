@@ -39,6 +39,8 @@ class OffersUITests: XCTestCase {
         XCTAssertFalse(offerOneIsFavorited)
 
         offerOneFavoritedSwitch.tap()
+        offerOneFavoritedSwitch.tap()
+        offerOneFavoritedSwitch.tap()
         application.buttons["Back"].tap()
 
         XCTAssertTrue(collectionCell1.staticTexts["FAVORITED"].exists)

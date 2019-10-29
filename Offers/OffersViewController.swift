@@ -9,7 +9,6 @@
 import UIKit
 
 import SnapKit
-import Kingfisher
 
 class OffersViewController: UIViewController, UICollectionViewDataSource {
     private let offersService: OffersService
@@ -39,17 +38,14 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
-        collectionView.dataSource = self
-        collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: "offerCell")
-        collectionView.delegate = self
-        collectionView.backgroundColor = UIColor.white
+        setupViews()
+        setupContraints()
+    }
 
-        self.view.addSubview(collectionView)
-        collectionView.snp.makeConstraints { (make) -> Void in
-            make.top.trailing.bottom.leading.equalTo(self.view)
-            make.width.height.equalTo(self.view)
-        }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+
+        collectionView.reloadData()
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
@@ -58,19 +54,7 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
                                                       for: indexPath) as! OffersCollectionViewCell
 
         cell.accessibilityIdentifier = "offerCell-\(indexPath.row)"
-        cell.valueLabelText = offersService.getOffers()[indexPath.row].currentValue
-        cell.nameLabelText = offersService.getOffers()[indexPath.row].name
-        if offersService.getOffers()[indexPath.row].favorited {
-            cell.favoriteCell()
-        } else {
-            cell.unfavoriteCell()
-        }
-
-        if let urlString = offersService.getOffers()[indexPath.row].url, let url = URL(string: urlString) {
-            cell.imageView.kf.indicatorType = .activity
-            cell.imageView.kf.setImage(with: url)
-        }
-
+        cell.configureFor(offer: offersService.getOffers()[indexPath.row])
         return cell
     }
 
@@ -80,6 +64,25 @@ class OffersViewController: UIViewController, UICollectionViewDataSource {
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) is not supported")
+    }
+}
+
+extension OffersViewController {
+    private func setupViews() {
+        collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.register(OffersCollectionViewCell.self, forCellWithReuseIdentifier: "offerCell")
+        collectionView.delegate = self
+        collectionView.backgroundColor = UIColor.white
+
+        self.view.addSubview(collectionView)
+    }
+
+    private func setupContraints() {
+        collectionView.snp.makeConstraints { (make) -> Void in
+            make.top.trailing.bottom.leading.equalTo(self.view)
+            make.width.height.equalTo(self.view)
+        }
     }
 }
 
@@ -98,7 +101,6 @@ extension OffersViewController: Favoritable {
     func didFavoriteOffer(withId id: String) {
         if let _ = self.collectionView.indexPathsForSelectedItems?[0].row {
             offersService.toggleFavoriteOffer(forId: id)
-            collectionView.reloadData()
         }
     }
 }
