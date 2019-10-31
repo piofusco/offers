@@ -26,7 +26,7 @@ class OffersUITests: XCTestCase {
         XCTAssertTrue(collectionCell1.staticTexts["Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges"].exists)
         collectionCell1.tap()
 
-        XCTAssertTrue(application.navigationBars["Offer 1"].exists)
+        XCTAssertTrue(application.navigationBars["Offer Detail"].exists)
         XCTAssertTrue(application.staticTexts["Name: Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges"].exists)
         XCTAssertTrue(application.staticTexts["Description: Any variety - 2 ct. pack or larger"].exists)
         XCTAssertTrue(application.staticTexts["Terms: Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub " +
@@ -40,7 +40,7 @@ class OffersUITests: XCTestCase {
         offerOneFavoritedButton.tap()
         offerOneFavoritedButton.tap()
         offerOneFavoritedButton.tap()
-        application.buttons["Back"].tap()
+        application.buttons["Offers"].tap()
 
         XCTAssertTrue(collectionCell1.images["FavoritedFilled"].exists)
 
@@ -48,7 +48,7 @@ class OffersUITests: XCTestCase {
         XCTAssertTrue(application.buttons["FavoriteButton"].isSelected)
 
         offerOneFavoritedButton.tap()
-        application.buttons["Back"].tap()
+        application.buttons["Offers"].tap()
 
         XCTAssertFalse(collectionCell1.images["Favorited"].exists)
 
@@ -58,7 +58,7 @@ class OffersUITests: XCTestCase {
         XCTAssertTrue(collectionCell3.staticTexts["Girl Scout Cookie™ Inspired Baking Mix"].exists)
         collectionCell3.tap()
 
-        XCTAssertTrue(application.navigationBars["Offer 3"].exists)
+        XCTAssertTrue(application.navigationBars["Offer Detail"].exists)
         XCTAssertTrue(application.staticTexts["Name: Girl Scout Cookie™ Inspired Baking Mix"].exists)
         XCTAssertTrue(application.staticTexts["Description: Any variety - Any size"].exists)
         XCTAssertTrue(application.staticTexts["Terms: Rebate valid on Girl Scout Cookie™ Inspired Baking Mix for any " +
@@ -70,7 +70,7 @@ class OffersUITests: XCTestCase {
         XCTAssertFalse(offerTwoFavoritedButton.isSelected)
 
         offerTwoFavoritedButton.tap()
-        application.buttons["Back"].tap()
+        application.buttons["Offers"].tap()
 
         XCTAssertTrue(collectionCell3.images["FavoritedFilled"].exists)
         collectionCell3.tap()

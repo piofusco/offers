@@ -62,8 +62,8 @@ class OfferDetailViewController: UIViewController {
         return button
     }()
 
-    var delegate: Favoritable?
     private var offer: Offer
+    weak var coordinator: MainCoordinator?
 
     init(offer: Offer) {
         self.offer = offer
@@ -93,7 +93,7 @@ class OfferDetailViewController: UIViewController {
 extension OfferDetailViewController {
     @objc func favoriteButtonTapped(sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        delegate?.didFavoriteOffer(withId: offer.id)
+        coordinator?.didFavoriteOffer(withId: offer.id)
     }
 }
 

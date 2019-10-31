@@ -6,11 +6,12 @@
 @testable import Offers
 
 class MockOffersService: OffersService {
-    var getOffersWasCalled = false
+    var didGetOffers = false
     var getOffersNumberOfCalls = 0
     var stubbedOffers: [Offer] = []
+
     func getOffers() -> [Offer] {
-        getOffersWasCalled = true
+        didGetOffers = true
         getOffersNumberOfCalls += 1
 
         return stubbedOffers
@@ -20,11 +21,11 @@ class MockOffersService: OffersService {
         fatalError("getOffer(forId:) has not been implemented")
     }
 
-    var favoriteOfferWasCalled = false
-    var lastFavoritedOfferId = ""
+    var didToggleFavoriteOffer = false
+    var lastToggledOffer = ""
 
     func toggleFavoriteOffer(forId id: String) {
-        favoriteOfferWasCalled = true
-        lastFavoritedOfferId = id
+        didToggleFavoriteOffer = true
+        lastToggledOffer = id
     }
 }

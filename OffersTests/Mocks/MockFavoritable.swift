@@ -3,12 +3,18 @@
 // Copyright (c) 2019 piofusco. All rights reserved.
 //
 
+import UIKit
+
 @testable import Offers
 
-class MockFavoriatable: Favoritable {
+class MockFavoriatable: MainCoordinator {
+    init() {
+        super.init(navigationController: UINavigationController(), offersService: MockOffersService())
+    }
+
     var lastFavoritedId = ""
 
-    func didFavoriteOffer(withId id: String) {
+    override func didFavoriteOffer(withId id: String) {
         lastFavoritedId = id
     }
 }

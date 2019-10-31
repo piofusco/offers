@@ -15,7 +15,7 @@ class OfferDetailViewControllerSpec: QuickSpec {
     override func spec() {
         describe("OfferDetailViewController") {
             describe("favoriting an offer") {
-                it("should call delegate with offer id") {
+                it("should call didFavoriteOffer on coordinator with offer id") {
                     let window = UIWindow(frame: UIScreen.main.bounds)
                     let expetedId = "some id"
                     let subject = OfferDetailViewController(
@@ -29,7 +29,7 @@ class OfferDetailViewControllerSpec: QuickSpec {
                         )
                     )
                     let mockFavoritableDelegate = MockFavoriatable()
-                    subject.delegate = mockFavoritableDelegate
+                    subject.coordinator = mockFavoritableDelegate
                     window.rootViewController = subject
                     subject.view.layoutSubviews()
 

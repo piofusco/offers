@@ -7,26 +7,30 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		B5B9C072D5F9B7B62F48F509 /* OffersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */; };
+		B5B9C0272B1D7E5CB5A0F6D2 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C5D8D038B63834E0114B /* Offer.swift */; };
+		B5B9C09A213C237A1C8DE557 /* OffersViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C7968EF874B3C1B967D2 /* OffersViewControllerSpec.swift */; };
+		B5B9C16E186A88DE43336DA7 /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C55E1602AF5CD96D8B5C /* OffersViewController.swift */; };
+		B5B9C185018B8E7EA093EDEA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C7E650849CF835FE2EAE /* Coordinator.swift */; };
 		B5B9C202F823943B5E194A53 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CFC79D4261DA8712F667 /* Colors.swift */; };
 		B5B9C2121E71C3A3233E49B0 /* offers.json in Resources */ = {isa = PBXBuildFile; fileRef = B5B9CBA6C790EDF169B09572 /* offers.json */; };
-		B5B9C4D2692C5319BE2A5495 /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C9480C6FF0BA196E90E4 /* OfferDetailViewController.swift */; };
-		B5B9C86122C3080C8C0C4C79 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CA7CB520362924823BB0 /* Offer.swift */; };
-		B5B9C8938831C68C4D90C99A /* OfferDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C8AD4F6BF23D077C2518 /* OfferDetailViewControllerSpec.swift */; };
+		B5B9C2319CC0BE3434529F61 /* OffersServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C6456907C2FE73F646F0 /* OffersServiceSpec.swift */; };
+		B5B9C29D7B533392CE9F32D5 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CCF9695EB216B75A7FC3 /* MainCoordinator.swift */; };
+		B5B9C2BA2F8FD4CC12C94AE0 /* CoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C52AE2C00DFE289CC8A9 /* CoordinatorSpec.swift */; };
+		B5B9C6A1DF71A6796D0E09DB /* OffersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C118FFF1DB7D2CE19436 /* OffersCollectionViewCell.swift */; };
+		B5B9C7B767D2D072AD8A3458 /* OfferDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C6F48FA216BDF9C1BF98 /* OfferDetailViewControllerSpec.swift */; };
+		B5B9C85EC026383EB415E154 /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CC8686FF67241E6276F3 /* OfferDetailViewController.swift */; };
 		B5B9C991A0DD13CE2A572328 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C01FC29B29DF765EBD25 /* Fonts.swift */; };
+		B5B9CC9F15685D7D05149310 /* OffersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CC0B039DB1D28BC48C97 /* OffersService.swift */; };
 		B5B9CD1DB623FB6D85E9D319 /* Images.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C7F5CAB8E1708EDF04AA /* Images.swift */; };
-		B5B9CD2FA292DBE06EEC524F /* OffersServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C61857AF8A5D51A382BE /* OffersServiceSpec.swift */; };
 		B5B9CE1B24ED9B54DCCC06BA /* MockFavoritable.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C85F572EB31A21282B63 /* MockFavoritable.swift */; };
-		B5B9CEBF5E20C0438EB9FE19 /* OffersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C3100ECE17F80A0723B6 /* OffersService.swift */; };
 		B5B9CF490D357A336B5F6020 /* MockOffersService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C1C04236A6E926F001E3 /* MockOffersService.swift */; };
+		B5B9CF747E23FC25FAD92657 /* MockNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C0D43BC78395E83FB886 /* MockNavigationController.swift */; };
 		F31196E32045CE9C00D9E2F9 /* Kingfisher.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F31196E22045CE9C00D9E2F9 /* Kingfisher.framework */; };
 		F38458C320250143003C32FF /* Quick.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38458C120250143003C32FF /* Quick.framework */; };
 		F38458C420250143003C32FF /* Nimble.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F38458C220250143003C32FF /* Nimble.framework */; };
 		F39F3AC32022E722004286C6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F3AC22022E722004286C6 /* AppDelegate.swift */; };
-		F39F3AC52022E722004286C6 /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F3AC42022E722004286C6 /* OffersViewController.swift */; };
 		F39F3ACA2022E722004286C6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F39F3AC92022E722004286C6 /* Assets.xcassets */; };
 		F39F3ACD2022E722004286C6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F39F3ACB2022E722004286C6 /* LaunchScreen.storyboard */; };
-		F39F3AD82022E722004286C6 /* OffersViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F3AD72022E722004286C6 /* OffersViewControllerSpec.swift */; };
 		F39F3AE32022E722004286C6 /* OffersUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39F3AE22022E722004286C6 /* OffersUITests.swift */; };
 		F3EA06062024FCEC00D786CF /* SnapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3EA06042024FCEC00D786CF /* SnapKit.framework */; };
 /* End PBXBuildFile section */
@@ -50,28 +54,32 @@
 
 /* Begin PBXFileReference section */
 		B5B9C01FC29B29DF765EBD25 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fonts.swift; path = Extensions/Fonts.swift; sourceTree = "<group>"; };
+		B5B9C0D43BC78395E83FB886 /* MockNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockNavigationController.swift; path = Mocks/MockNavigationController.swift; sourceTree = "<group>"; };
+		B5B9C118FFF1DB7D2CE19436 /* OffersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5B9C1C04236A6E926F001E3 /* MockOffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockOffersService.swift; path = Mocks/MockOffersService.swift; sourceTree = "<group>"; };
-		B5B9C3100ECE17F80A0723B6 /* OffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersService.swift; sourceTree = "<group>"; };
-		B5B9C61857AF8A5D51A382BE /* OffersServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersServiceSpec.swift; sourceTree = "<group>"; };
+		B5B9C52AE2C00DFE289CC8A9 /* CoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorSpec.swift; sourceTree = "<group>"; };
+		B5B9C55E1602AF5CD96D8B5C /* OffersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
+		B5B9C5D8D038B63834E0114B /* Offer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
+		B5B9C6456907C2FE73F646F0 /* OffersServiceSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersServiceSpec.swift; sourceTree = "<group>"; };
+		B5B9C6F48FA216BDF9C1BF98 /* OfferDetailViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewControllerSpec.swift; sourceTree = "<group>"; };
+		B5B9C7968EF874B3C1B967D2 /* OffersViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersViewControllerSpec.swift; sourceTree = "<group>"; };
+		B5B9C7E650849CF835FE2EAE /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = Coordinator/Coordinator.swift; sourceTree = "<group>"; };
 		B5B9C7F5CAB8E1708EDF04AA /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Images.swift; path = Extensions/Images.swift; sourceTree = "<group>"; };
 		B5B9C85F572EB31A21282B63 /* MockFavoritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockFavoritable.swift; path = Mocks/MockFavoritable.swift; sourceTree = "<group>"; };
-		B5B9C8AD4F6BF23D077C2518 /* OfferDetailViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewControllerSpec.swift; sourceTree = "<group>"; };
-		B5B9C9480C6FF0BA196E90E4 /* OfferDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
-		B5B9CA7CB520362924823BB0 /* Offer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Offer.swift; sourceTree = "<group>"; };
 		B5B9CBA6C790EDF169B09572 /* offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = offers.json; sourceTree = "<group>"; };
-		B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5B9CC0B039DB1D28BC48C97 /* OffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersService.swift; sourceTree = "<group>"; };
+		B5B9CC8686FF67241E6276F3 /* OfferDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
+		B5B9CCF9695EB216B75A7FC3 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainCoordinator.swift; path = Coordinator/MainCoordinator.swift; sourceTree = "<group>"; };
 		B5B9CFC79D4261DA8712F667 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = Extensions/Colors.swift; sourceTree = "<group>"; };
 		F31196E22045CE9C00D9E2F9 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		F38458C120250143003C32FF /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
 		F38458C220250143003C32FF /* Nimble.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Nimble.framework; path = Carthage/Build/iOS/Nimble.framework; sourceTree = "<group>"; };
 		F39F3ABF2022E722004286C6 /* Offers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Offers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F39F3AC22022E722004286C6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		F39F3AC42022E722004286C6 /* OffersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
 		F39F3AC92022E722004286C6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F39F3ACC2022E722004286C6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F39F3ACE2022E722004286C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F39F3AD32022E722004286C6 /* OffersTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OffersTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		F39F3AD72022E722004286C6 /* OffersViewControllerSpec.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersViewControllerSpec.swift; sourceTree = "<group>"; };
 		F39F3AD92022E722004286C6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F39F3ADE2022E722004286C6 /* OffersUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OffersUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F39F3AE22022E722004286C6 /* OffersUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OffersUITests.swift; sourceTree = "<group>"; };
@@ -109,6 +117,64 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		B5B9C45E98985936C5E666A2 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				B5B9C5D8D038B63834E0114B /* Offer.swift */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		B5B9C50ADF3AA12F5CE44BF5 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5B9C55E1602AF5CD96D8B5C /* OffersViewController.swift */,
+				B5B9CC8686FF67241E6276F3 /* OfferDetailViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B5B9C53AF2B5B324E79ED3A8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B5B9C118FFF1DB7D2CE19436 /* OffersCollectionViewCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B5B9C913ECEC7F83990EF570 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B5B9C6456907C2FE73F646F0 /* OffersServiceSpec.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B5B9CB1DD1157C571834FD0C /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				B5B9CC0B039DB1D28BC48C97 /* OffersService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		B5B9CB2B981A329D7AE254C7 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				B5B9C52AE2C00DFE289CC8A9 /* CoordinatorSpec.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		B5B9CD1E0A7AD1B80DC552A7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				B5B9C6F48FA216BDF9C1BF98 /* OfferDetailViewControllerSpec.swift */,
+				B5B9C7968EF874B3C1B967D2 /* OffersViewControllerSpec.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
 		F39F3AB62022E722004286C6 = {
 			isa = PBXGroup;
 			children = (
@@ -134,18 +200,19 @@
 			isa = PBXGroup;
 			children = (
 				F39F3AC22022E722004286C6 /* AppDelegate.swift */,
-				F39F3AC42022E722004286C6 /* OffersViewController.swift */,
 				F39F3AC92022E722004286C6 /* Assets.xcassets */,
 				F39F3ACB2022E722004286C6 /* LaunchScreen.storyboard */,
 				F39F3ACE2022E722004286C6 /* Info.plist */,
-				B5B9CE6DEE467573CE77F0BB /* OffersCollectionViewCell.swift */,
 				B5B9CBA6C790EDF169B09572 /* offers.json */,
-				B5B9CA7CB520362924823BB0 /* Offer.swift */,
-				B5B9C9480C6FF0BA196E90E4 /* OfferDetailViewController.swift */,
-				B5B9C3100ECE17F80A0723B6 /* OffersService.swift */,
 				B5B9CFC79D4261DA8712F667 /* Colors.swift */,
 				B5B9C01FC29B29DF765EBD25 /* Fonts.swift */,
 				B5B9C7F5CAB8E1708EDF04AA /* Images.swift */,
+				B5B9C7E650849CF835FE2EAE /* Coordinator.swift */,
+				B5B9CCF9695EB216B75A7FC3 /* MainCoordinator.swift */,
+				B5B9C45E98985936C5E666A2 /* Core */,
+				B5B9CB1DD1157C571834FD0C /* Services */,
+				B5B9C50ADF3AA12F5CE44BF5 /* Controllers */,
+				B5B9C53AF2B5B324E79ED3A8 /* Views */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -153,12 +220,13 @@
 		F39F3AD62022E722004286C6 /* OffersTests */ = {
 			isa = PBXGroup;
 			children = (
-				F39F3AD72022E722004286C6 /* OffersViewControllerSpec.swift */,
 				F39F3AD92022E722004286C6 /* Info.plist */,
 				B5B9C1C04236A6E926F001E3 /* MockOffersService.swift */,
-				B5B9C61857AF8A5D51A382BE /* OffersServiceSpec.swift */,
-				B5B9C8AD4F6BF23D077C2518 /* OfferDetailViewControllerSpec.swift */,
 				B5B9C85F572EB31A21282B63 /* MockFavoritable.swift */,
+				B5B9CD1E0A7AD1B80DC552A7 /* Controllers */,
+				B5B9C913ECEC7F83990EF570 /* Services */,
+				B5B9CB2B981A329D7AE254C7 /* Coordinator */,
+				B5B9C0D43BC78395E83FB886 /* MockNavigationController.swift */,
 			);
 			path = OffersTests;
 			sourceTree = "<group>";
@@ -361,15 +429,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F39F3AC52022E722004286C6 /* OffersViewController.swift in Sources */,
 				F39F3AC32022E722004286C6 /* AppDelegate.swift in Sources */,
-				B5B9C072D5F9B7B62F48F509 /* OffersCollectionViewCell.swift in Sources */,
-				B5B9C86122C3080C8C0C4C79 /* Offer.swift in Sources */,
-				B5B9C4D2692C5319BE2A5495 /* OfferDetailViewController.swift in Sources */,
-				B5B9CEBF5E20C0438EB9FE19 /* OffersService.swift in Sources */,
 				B5B9C202F823943B5E194A53 /* Colors.swift in Sources */,
 				B5B9C991A0DD13CE2A572328 /* Fonts.swift in Sources */,
 				B5B9CD1DB623FB6D85E9D319 /* Images.swift in Sources */,
+				B5B9C185018B8E7EA093EDEA /* Coordinator.swift in Sources */,
+				B5B9C29D7B533392CE9F32D5 /* MainCoordinator.swift in Sources */,
+				B5B9C0272B1D7E5CB5A0F6D2 /* Offer.swift in Sources */,
+				B5B9CC9F15685D7D05149310 /* OffersService.swift in Sources */,
+				B5B9C16E186A88DE43336DA7 /* OffersViewController.swift in Sources */,
+				B5B9C85EC026383EB415E154 /* OfferDetailViewController.swift in Sources */,
+				B5B9C6A1DF71A6796D0E09DB /* OffersCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,11 +447,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F39F3AD82022E722004286C6 /* OffersViewControllerSpec.swift in Sources */,
 				B5B9CF490D357A336B5F6020 /* MockOffersService.swift in Sources */,
-				B5B9CD2FA292DBE06EEC524F /* OffersServiceSpec.swift in Sources */,
-				B5B9C8938831C68C4D90C99A /* OfferDetailViewControllerSpec.swift in Sources */,
 				B5B9CE1B24ED9B54DCCC06BA /* MockFavoritable.swift in Sources */,
+				B5B9C7B767D2D072AD8A3458 /* OfferDetailViewControllerSpec.swift in Sources */,
+				B5B9C09A213C237A1C8DE557 /* OffersViewControllerSpec.swift in Sources */,
+				B5B9C2319CC0BE3434529F61 /* OffersServiceSpec.swift in Sources */,
+				B5B9C2BA2F8FD4CC12C94AE0 /* CoordinatorSpec.swift in Sources */,
+				B5B9CF747E23FC25FAD92657 /* MockNavigationController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

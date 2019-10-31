@@ -12,6 +12,7 @@ import SnapKit
 
 class OffersViewController: UIViewController, UICollectionViewDataSource {
     private let offersService: OffersService
+    weak var coordinator: MainCoordinator?
 
     private var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -89,18 +90,7 @@ extension OffersViewController {
 extension OffersViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedOffer = offersService.getOffers()[indexPath.row]
-        let detailViewController = OfferDetailViewController(offer: selectedOffer)
-        detailViewController.delegate = self
-        detailViewController.navigationItem.title = "Offer \(indexPath.row + 1)"
 
-        navigationController?.pushViewController(detailViewController, animated: true)
-    }
-}
-
-extension OffersViewController: Favoritable {
-    func didFavoriteOffer(withId id: String) {
-        if let _ = self.collectionView.indexPathsForSelectedItems?[0].row {
-            offersService.toggleFavoriteOffer(forId: id)
-        }
+        coordinator?.viewOffer(offer: selectedOffer)
     }
 }
