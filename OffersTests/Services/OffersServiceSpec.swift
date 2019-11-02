@@ -11,35 +11,51 @@ import Nimble
 class OffersServiceSpec: QuickSpec {
     override func spec() {
         var subject: OffersServiceImplementation!
+        var mockDataStore: MockDataStore!
 
         beforeEach {
-            subject = OffersServiceImplementation()
+            mockDataStore = MockDataStore()
+            subject = OffersServiceImplementation(dataStore: mockDataStore)
         }
 
         describe("OffersService") {
             describe("getOffers") {
-                it("should return Offers read in from memory") {
-                    expect(subject.getOffers().count).to(equal(132))
+                it("data store should return retrieve all offers") {
+                    let _ = subject.getOffers()
+
+                    expect(mockDataStore.numberOfElementsInvocations).to(equal(1))
                 }
             }
 
             describe("toggleFavoriteOffer") {
-                it("given id for an existing offer, should find that offer and update favorited to be true") {
-                    subject.toggleFavoriteOffer(forId: "110579")
-
-                    expect(subject.getOffer(forId: "110579")).notTo(beNil())
-                    expect(subject.getOffer(forId: "110579")!.favorited).to(beTrue())
+                it("given id for an existing offer, data store should retrieve/update element with matching id") {
+                    mockDataStore.stubbedElement = Offer(id: "110579", name: "", url: "", description: "", terms: "", currentValue: "")
 
                     subject.toggleFavoriteOffer(forId: "110579")
 
-                    expect(subject.getOffer(forId: "110579")).notTo(beNil())
-                    expect(subject.getOffer(forId: "110579")!.favorited).to(beFalse())
+                    expect(mockDataStore.numberOfElementInvocations).to(equal(1))
+                    expect(mockDataStore.numberOfUpdateInvocations).to(equal(1))
+                    expect(mockDataStore.lastUpdatedElementId).to(equal("110579"))
                 }
             }
 
             describe("getOffer") {
                 it("given an id that is not associated to an existing offer, should return nil") {
-                    expect(subject.getOffer(forId: "Bob Sagat")).to(beNil())
+                    let offer = subject.getOffer(forId: "Bob Sagat")
+
+                    expect(offer).to(beNil())
+                    expect(mockDataStore.numberOfElementInvocations).to(equal(1))
+                    expect(mockDataStore.lastElementId).to(equal("Bob Sagat"))
+                }
+
+                it("given an existing id, data store should return corresponding offer") {
+                    mockDataStore.stubbedElement = Offer(id: "Ted Bundy", name: "", url: "", description: "", terms: "", currentValue: "")
+
+                    let offer = subject.getOffer(forId: "Ted Bundy")
+
+                    expect(offer!.id).to(equal("Ted Bundy"))
+                    expect(mockDataStore.numberOfElementInvocations).to(equal(1))
+                    expect(mockDataStore.lastElementId).to(equal("Ted Bundy"))
                 }
             }
         }

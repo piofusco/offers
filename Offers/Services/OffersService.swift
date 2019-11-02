@@ -12,34 +12,24 @@ protocol OffersService {
 }
 
 class OffersServiceImplementation: OffersService {
-    private var offersOnDisk: [Offer] = []
+    private var dataStore: DataStore
 
-    init() {
-        if let path = Bundle.main.path(forResource: "offers", ofType: "json") {
-            do {
-                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                let decoder = JSONDecoder()
-                offersOnDisk = try decoder.decode([Offer].self, from: data)
-            } catch let parsingError {
-                print("Error", parsingError)
-            }
-        }
+    init(dataStore: DataStore) {
+        self.dataStore = dataStore
     }
 
     func toggleFavoriteOffer(forId id: String) {
-        for (index, offer) in offersOnDisk.enumerated() {
-            if (offer.id == id) {
-                offersOnDisk[index].favorited = !offersOnDisk[index].favorited
-                return
-            }
+        if var offer: Offer = dataStore.element(id: id) {
+            offer.favorited = !offer.favorited
+            dataStore.update(element: offer)
         }
     }
 
     func getOffer(forId id: String) -> Offer? {
-        offersOnDisk.first(where: { $0.id == id })
+        dataStore.element(id: id)
     }
 
     func getOffers() -> [Offer] {
-        offersOnDisk
+        dataStore.elements()
     }
 }

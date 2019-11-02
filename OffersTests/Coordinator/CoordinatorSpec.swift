@@ -59,7 +59,7 @@ class CoordinatorSpec: QuickSpec {
 
                         subject.didFavoriteOffer(withId: "some id")
 
-                        expect(mockOffersService.didToggleFavoriteOffer).to(beTrue())
+                        expect(mockOffersService.numberOfToggleFavoriteOfferInvocations).to(equal(1))
                         expect(mockOffersService.lastToggledOffer).to(equal("some id"))
                     }
                 }

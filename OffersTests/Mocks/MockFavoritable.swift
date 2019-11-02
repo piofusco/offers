@@ -13,7 +13,6 @@ class MockFavoriatable: MainCoordinator {
     }
 
     var lastFavoritedId = ""
-
     override func didFavoriteOffer(withId id: String) {
         lastFavoritedId = id
     }

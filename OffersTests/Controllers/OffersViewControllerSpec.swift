@@ -51,7 +51,7 @@ class OffersViewControllerSpec: QuickSpec {
 
                     subject.collectionView(subject.collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
 
-                    expect(mockOffersService.didGetOffers).to(beTrue())
+                    expect(mockOffersService.numberOfGetOfferInvocations).to(equal(1))
                 }
             }
         }

@@ -16,6 +16,8 @@
 		B5B9C2319CC0BE3434529F61 /* OffersServiceSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C6456907C2FE73F646F0 /* OffersServiceSpec.swift */; };
 		B5B9C29D7B533392CE9F32D5 /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CCF9695EB216B75A7FC3 /* MainCoordinator.swift */; };
 		B5B9C2BA2F8FD4CC12C94AE0 /* CoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C52AE2C00DFE289CC8A9 /* CoordinatorSpec.swift */; };
+		B5B9C42C60311A8AD8667FD0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CB30F84B03939F327BC7 /* DataStore.swift */; };
+		B5B9C44AA0DA79EF1DC921AB /* MockDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C82D0C9487620D567A20 /* MockDataStore.swift */; };
 		B5B9C6A1DF71A6796D0E09DB /* OffersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C118FFF1DB7D2CE19436 /* OffersCollectionViewCell.swift */; };
 		B5B9C7B767D2D072AD8A3458 /* OfferDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C6F48FA216BDF9C1BF98 /* OfferDetailViewControllerSpec.swift */; };
 		B5B9C85EC026383EB415E154 /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CC8686FF67241E6276F3 /* OfferDetailViewController.swift */; };
@@ -65,7 +67,9 @@
 		B5B9C7968EF874B3C1B967D2 /* OffersViewControllerSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersViewControllerSpec.swift; sourceTree = "<group>"; };
 		B5B9C7E650849CF835FE2EAE /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Coordinator.swift; path = Coordinator/Coordinator.swift; sourceTree = "<group>"; };
 		B5B9C7F5CAB8E1708EDF04AA /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Images.swift; path = Extensions/Images.swift; sourceTree = "<group>"; };
+		B5B9C82D0C9487620D567A20 /* MockDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockDataStore.swift; path = Mocks/MockDataStore.swift; sourceTree = "<group>"; };
 		B5B9C85F572EB31A21282B63 /* MockFavoritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockFavoritable.swift; path = Mocks/MockFavoritable.swift; sourceTree = "<group>"; };
+		B5B9CB30F84B03939F327BC7 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		B5B9CBA6C790EDF169B09572 /* offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = offers.json; sourceTree = "<group>"; };
 		B5B9CC0B039DB1D28BC48C97 /* OffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersService.swift; sourceTree = "<group>"; };
 		B5B9CC8686FF67241E6276F3 /* OfferDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +158,7 @@
 			isa = PBXGroup;
 			children = (
 				B5B9CC0B039DB1D28BC48C97 /* OffersService.swift */,
+				B5B9CB30F84B03939F327BC7 /* DataStore.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -227,6 +232,7 @@
 				B5B9C913ECEC7F83990EF570 /* Services */,
 				B5B9CB2B981A329D7AE254C7 /* Coordinator */,
 				B5B9C0D43BC78395E83FB886 /* MockNavigationController.swift */,
+				B5B9C82D0C9487620D567A20 /* MockDataStore.swift */,
 			);
 			path = OffersTests;
 			sourceTree = "<group>";
@@ -440,6 +446,7 @@
 				B5B9C16E186A88DE43336DA7 /* OffersViewController.swift in Sources */,
 				B5B9C85EC026383EB415E154 /* OfferDetailViewController.swift in Sources */,
 				B5B9C6A1DF71A6796D0E09DB /* OffersCollectionViewCell.swift in Sources */,
+				B5B9C42C60311A8AD8667FD0 /* DataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -454,6 +461,7 @@
 				B5B9C2319CC0BE3434529F61 /* OffersServiceSpec.swift in Sources */,
 				B5B9C2BA2F8FD4CC12C94AE0 /* CoordinatorSpec.swift in Sources */,
 				B5B9CF747E23FC25FAD92657 /* MockNavigationController.swift in Sources */,
+				B5B9C44AA0DA79EF1DC921AB /* MockDataStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

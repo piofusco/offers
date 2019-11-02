@@ -7,7 +7,6 @@ import UIKit
 
 class MockNavigationController: UINavigationController {
     var lastPushedVC: UIViewController = UIViewController()
-
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         self.lastPushedVC = viewController
     }
