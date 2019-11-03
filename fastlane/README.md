@@ -31,6 +31,11 @@ Runs UI Test
 fastlane ios test
 ```
 Run all tests
+### ios sprout
+```
+fastlane ios sprout
+```
+Register devices
 ### ios beta
 ```
 fastlane ios beta

@@ -43,6 +43,17 @@ platform :ios do
     self.ui_tests
   end
 
+  desc 'Register devices'
+  lane :sprout do
+    register_devices(
+      devices: {
+        "Gideon's iPhone" => "245bc927a05d5d464130a93a747a185916222c98"
+      },
+      team_id: ENV["TEAM_ID"],
+      username: ENV["APP_STORE_CONNECT_ID"]
+    )
+  end
+
   desc 'Deploy to TestFlight'
   lane :beta do
     ensure_git_status_clean
