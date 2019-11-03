@@ -153,6 +153,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  excon
   fastlane
   mini_magick (>= 4.9.4)
   rubyzip (>= 1.3.0)
