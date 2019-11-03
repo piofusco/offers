@@ -1,0 +1,5 @@
+app_identifier("io.piofusco.offers")
+git_url("git@github.com:piofusco/offers-certificates.git")
+storage_mode("git")
+type("development")
+username("terinopace@gmail.com")

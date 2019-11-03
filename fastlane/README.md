@@ -31,6 +31,11 @@ Runs UI Test
 fastlane ios test
 ```
 Run all tests
+### ios beta
+```
+fastlane ios beta
+```
+Deploy to TestFlight
 
 ----
 
