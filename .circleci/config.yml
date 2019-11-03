@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build-test:
+  build-and-test:
     macos:
       xcode: "11.1.0"
     working_directory: /Users/distiller/project
@@ -36,6 +36,6 @@ jobs:
           destination: scan-logs
 workflows:
   version: 2
-  build-test:
+  build-and-test:
     jobs:
       - build-and-test
