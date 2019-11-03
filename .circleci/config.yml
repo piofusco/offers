@@ -1,6 +1,6 @@
 version: 2
 jobs:
-  build:
+  build-test:
     macos:
       xcode: "11.1.0"
     working_directory: /Users/distiller/project
