@@ -73,8 +73,8 @@ jobs:
             - carthage-cache-{{ checksum "Cartfile.resolved" }}
             - carthage-cache-
       - run:
-          name: Run Unit Tests
-          command: bundle exec fastlane unit_tests
+          name: Run UI Tests
+          command: bundle exec fastlane ui_tests
           environment:
             SCAN_DEVICE: iPhone 5s
             SCAN_SCHEME: WebTests
