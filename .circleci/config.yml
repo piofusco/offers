@@ -7,9 +7,9 @@ jobs:
     steps:
       - checkout
       - restore_cache:
-        keys:
-          - gem-cache-{{ checksum "Gemfile.lock" }}
-          - gem-cache-
+          keys:
+            - gem-cache-{{ checksum "Gemfile.lock" }}
+            - gem-cache-
       - run: bundle install --path vendor/bundle
       - save_cache:
           key: gem-cache-{{ checksum "Gemfile.lock" }}
