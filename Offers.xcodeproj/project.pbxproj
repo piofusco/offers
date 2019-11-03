@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		B5B9C0272B1D7E5CB5A0F6D2 /* Offer.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C5D8D038B63834E0114B /* Offer.swift */; };
 		B5B9C09A213C237A1C8DE557 /* OffersViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C7968EF874B3C1B967D2 /* OffersViewControllerSpec.swift */; };
+		B5B9C0D137ED069F94474593 /* OffersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CE87F8AAAA660EA1C646 /* OffersCollectionViewCell.swift */; };
 		B5B9C16E186A88DE43336DA7 /* OffersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C55E1602AF5CD96D8B5C /* OffersViewController.swift */; };
 		B5B9C185018B8E7EA093EDEA /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C7E650849CF835FE2EAE /* Coordinator.swift */; };
 		B5B9C202F823943B5E194A53 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CFC79D4261DA8712F667 /* Colors.swift */; };
@@ -18,7 +19,8 @@
 		B5B9C2BA2F8FD4CC12C94AE0 /* CoordinatorSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C52AE2C00DFE289CC8A9 /* CoordinatorSpec.swift */; };
 		B5B9C42C60311A8AD8667FD0 /* DataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CB30F84B03939F327BC7 /* DataStore.swift */; };
 		B5B9C44AA0DA79EF1DC921AB /* MockDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C82D0C9487620D567A20 /* MockDataStore.swift */; };
-		B5B9C6A1DF71A6796D0E09DB /* OffersCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C118FFF1DB7D2CE19436 /* OffersCollectionViewCell.swift */; };
+		B5B9C597F45D66E10CFB40C9 /* OfferDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CAE6C4CBEAFE9F3D7F93 /* OfferDetailView.swift */; };
+		B5B9C730B24DE8B827B7E002 /* OfferDetailViewSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C1A03AF541419B8389B2 /* OfferDetailViewSpec.swift */; };
 		B5B9C7B767D2D072AD8A3458 /* OfferDetailViewControllerSpec.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C6F48FA216BDF9C1BF98 /* OfferDetailViewControllerSpec.swift */; };
 		B5B9C85EC026383EB415E154 /* OfferDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9CC8686FF67241E6276F3 /* OfferDetailViewController.swift */; };
 		B5B9C991A0DD13CE2A572328 /* Fonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5B9C01FC29B29DF765EBD25 /* Fonts.swift */; };
@@ -58,6 +60,7 @@
 		B5B9C01FC29B29DF765EBD25 /* Fonts.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Fonts.swift; path = Extensions/Fonts.swift; sourceTree = "<group>"; };
 		B5B9C0D43BC78395E83FB886 /* MockNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockNavigationController.swift; path = Mocks/MockNavigationController.swift; sourceTree = "<group>"; };
 		B5B9C118FFF1DB7D2CE19436 /* OffersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersCollectionViewCell.swift; sourceTree = "<group>"; };
+		B5B9C1A03AF541419B8389B2 /* OfferDetailViewSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewSpec.swift; sourceTree = "<group>"; };
 		B5B9C1C04236A6E926F001E3 /* MockOffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockOffersService.swift; path = Mocks/MockOffersService.swift; sourceTree = "<group>"; };
 		B5B9C52AE2C00DFE289CC8A9 /* CoordinatorSpec.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinatorSpec.swift; sourceTree = "<group>"; };
 		B5B9C55E1602AF5CD96D8B5C /* OffersViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersViewController.swift; sourceTree = "<group>"; };
@@ -69,11 +72,13 @@
 		B5B9C7F5CAB8E1708EDF04AA /* Images.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Images.swift; path = Extensions/Images.swift; sourceTree = "<group>"; };
 		B5B9C82D0C9487620D567A20 /* MockDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockDataStore.swift; path = Mocks/MockDataStore.swift; sourceTree = "<group>"; };
 		B5B9C85F572EB31A21282B63 /* MockFavoritable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MockFavoritable.swift; path = Mocks/MockFavoritable.swift; sourceTree = "<group>"; };
+		B5B9CAE6C4CBEAFE9F3D7F93 /* OfferDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailView.swift; sourceTree = "<group>"; };
 		B5B9CB30F84B03939F327BC7 /* DataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataStore.swift; sourceTree = "<group>"; };
 		B5B9CBA6C790EDF169B09572 /* offers.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = offers.json; sourceTree = "<group>"; };
 		B5B9CC0B039DB1D28BC48C97 /* OffersService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OffersService.swift; sourceTree = "<group>"; };
 		B5B9CC8686FF67241E6276F3 /* OfferDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OfferDetailViewController.swift; sourceTree = "<group>"; };
 		B5B9CCF9695EB216B75A7FC3 /* MainCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MainCoordinator.swift; path = Coordinator/MainCoordinator.swift; sourceTree = "<group>"; };
+		B5B9CE87F8AAAA660EA1C646 /* OffersCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OffersCollectionViewCell.swift; path = Cells/OffersCollectionViewCell.swift; sourceTree = "<group>"; };
 		B5B9CFC79D4261DA8712F667 /* Colors.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Colors.swift; path = Extensions/Colors.swift; sourceTree = "<group>"; };
 		F31196E22045CE9C00D9E2F9 /* Kingfisher.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Kingfisher.framework; path = Carthage/Build/iOS/Kingfisher.framework; sourceTree = "<group>"; };
 		F38458C120250143003C32FF /* Quick.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Quick.framework; path = Carthage/Build/iOS/Quick.framework; sourceTree = "<group>"; };
@@ -134,6 +139,7 @@
 			children = (
 				B5B9C55E1602AF5CD96D8B5C /* OffersViewController.swift */,
 				B5B9CC8686FF67241E6276F3 /* OfferDetailViewController.swift */,
+				B5B9CAE6C4CBEAFE9F3D7F93 /* OfferDetailView.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -176,6 +182,7 @@
 			children = (
 				B5B9C6F48FA216BDF9C1BF98 /* OfferDetailViewControllerSpec.swift */,
 				B5B9C7968EF874B3C1B967D2 /* OffersViewControllerSpec.swift */,
+				B5B9C1A03AF541419B8389B2 /* OfferDetailViewSpec.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -218,6 +225,7 @@
 				B5B9CB1DD1157C571834FD0C /* Services */,
 				B5B9C50ADF3AA12F5CE44BF5 /* Controllers */,
 				B5B9C53AF2B5B324E79ED3A8 /* Views */,
+				B5B9CE87F8AAAA660EA1C646 /* OffersCollectionViewCell.swift */,
 			);
 			path = Offers;
 			sourceTree = "<group>";
@@ -445,8 +453,10 @@
 				B5B9CC9F15685D7D05149310 /* OffersService.swift in Sources */,
 				B5B9C16E186A88DE43336DA7 /* OffersViewController.swift in Sources */,
 				B5B9C85EC026383EB415E154 /* OfferDetailViewController.swift in Sources */,
-				B5B9C6A1DF71A6796D0E09DB /* OffersCollectionViewCell.swift in Sources */,
+				B5B9C6A1DF71A6796D0E09DB,
 				B5B9C42C60311A8AD8667FD0 /* DataStore.swift in Sources */,
+				B5B9C597F45D66E10CFB40C9 /* OfferDetailView.swift in Sources */,
+				B5B9C0D137ED069F94474593 /* OffersCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +472,7 @@
 				B5B9C2BA2F8FD4CC12C94AE0 /* CoordinatorSpec.swift in Sources */,
 				B5B9CF747E23FC25FAD92657 /* MockNavigationController.swift in Sources */,
 				B5B9C44AA0DA79EF1DC921AB /* MockDataStore.swift in Sources */,
+				B5B9C730B24DE8B827B7E002 /* OfferDetailViewSpec.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

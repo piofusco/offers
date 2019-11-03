@@ -16,11 +16,10 @@ class OfferDetailViewControllerSpec: QuickSpec {
         describe("OfferDetailViewController") {
             describe("favoriting an offer") {
                 it("should call didFavoriteOffer on coordinator with offer id") {
-                    let window = UIWindow(frame: UIScreen.main.bounds)
-                    let expetedId = "some id"
+                    let expectedId = "some id"
                     let subject = OfferDetailViewController(
                         offer: Offer(
-                            id: expetedId,
+                            id: expectedId,
                             name: "",
                             url: "",
                             description: "",
@@ -28,14 +27,12 @@ class OfferDetailViewControllerSpec: QuickSpec {
                             currentValue: ""
                         )
                     )
-                    let mockFavoritableDelegate = MockFavoriatable()
-                    subject.coordinator = mockFavoritableDelegate
-                    window.rootViewController = subject
-                    subject.view.layoutSubviews()
+                    let mockCoordinator = MockFavoriatable()
+                    subject.coordinator = mockCoordinator
 
-                    subject.favoriteButtonTapped(sender: UIButton())
+                    subject.didFavoriteOffer(withId: expectedId)
 
-                    expect(mockFavoritableDelegate.lastFavoritedId).to(equal(expetedId))
+                    expect(mockCoordinator.lastFavoritedId).to(equal(expectedId))
                 }
             }
         }
