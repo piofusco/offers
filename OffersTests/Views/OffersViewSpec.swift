@@ -4,7 +4,7 @@
 //
 
 import Quick
-import Nimble
+import XCTest
 
 @testable import Offers
 
@@ -21,7 +21,7 @@ class OffersViewSpec: QuickSpec {
                     ]
                     let subject = OffersView(offers: offers)
 
-                    expect(subject.collectionView(subject.collectionView!, numberOfItemsInSection: 0)).to(equal(4))
+                    XCTAssertEqual(subject.collectionView(subject.collectionView!, numberOfItemsInSection: 0), 4)
                 }
             }
 
@@ -40,8 +40,8 @@ class OffersViewSpec: QuickSpec {
 
                     subject.collectionView(subject.collectionView, didSelectItemAt: IndexPath(row: 0, section: 0))
 
-                    expect(mockDelegate.numberOfDidSelectOfferInvocations).to(equal(1))
-                    expect(mockDelegate.lastSelectedOfferId).to(equal(expectedId))
+                    XCTAssertEqual(mockDelegate.numberOfDidSelectOfferInvocations, 1)
+                    XCTAssertEqual(mockDelegate.lastSelectedOfferId, expectedId)
                 }
             }
         }

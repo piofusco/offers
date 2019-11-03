@@ -3,8 +3,9 @@
 // Copyright (c) 2019 piofusco. All rights reserved.
 //
 
+import XCTest
+
 import Quick
-import Nimble
 
 @testable import Offers
 
@@ -21,7 +22,7 @@ class OfferDetailViewSpec: QuickSpec {
 
                     subject.favoriteButtonTapped(sender: UIButton())
 
-                    expect(mockFavoritableDelegate.lastFavoritedId).to(equal(expectedId))
+                    XCTAssertEqual(mockFavoritableDelegate.lastFavoritedId, expectedId)
                 }
             }
         }

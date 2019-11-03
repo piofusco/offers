@@ -3,8 +3,9 @@
 // Copyright (c) 2019 piofusco. All rights reserved.
 //
 
+import XCTest
+
 import Quick
-import Nimble
 
 @testable import Offers
 
@@ -23,7 +24,7 @@ class OffersServiceSpec: QuickSpec {
                 it("data store should return retrieve all offers") {
                     let _ = subject.getOffers()
 
-                    expect(mockDataStore.numberOfElementsInvocations).to(equal(1))
+                    XCTAssertEqual(mockDataStore.numberOfElementsInvocations, 1)
                 }
             }
 
@@ -33,9 +34,9 @@ class OffersServiceSpec: QuickSpec {
 
                     subject.toggleFavoriteOffer(forId: "110579")
 
-                    expect(mockDataStore.numberOfElementInvocations).to(equal(1))
-                    expect(mockDataStore.numberOfUpdateInvocations).to(equal(1))
-                    expect(mockDataStore.lastUpdatedElementId).to(equal("110579"))
+                    XCTAssertEqual(mockDataStore.numberOfElementInvocations, 1)
+                    XCTAssertEqual(mockDataStore.numberOfUpdateInvocations, 1)
+                    XCTAssertEqual(mockDataStore.lastUpdatedElementId, "110579")
                 }
             }
 
@@ -43,9 +44,9 @@ class OffersServiceSpec: QuickSpec {
                 it("given an id that is not associated to an existing offer, should return nil") {
                     let offer = subject.getOffer(forId: "Bob Sagat")
 
-                    expect(offer).to(beNil())
-                    expect(mockDataStore.numberOfElementInvocations).to(equal(1))
-                    expect(mockDataStore.lastElementId).to(equal("Bob Sagat"))
+                    XCTAssertNil(offer)
+                    XCTAssertEqual(mockDataStore.numberOfElementInvocations, 1)
+                    XCTAssertEqual(mockDataStore.lastElementId, "Bob Sagat")
                 }
 
                 it("given an existing id, data store should return corresponding offer") {
@@ -53,9 +54,9 @@ class OffersServiceSpec: QuickSpec {
 
                     let offer = subject.getOffer(forId: "Ted Bundy")
 
-                    expect(offer!.id).to(equal("Ted Bundy"))
-                    expect(mockDataStore.numberOfElementInvocations).to(equal(1))
-                    expect(mockDataStore.lastElementId).to(equal("Ted Bundy"))
+                    XCTAssertEqual(offer!.id, "Ted Bundy")
+                    XCTAssertEqual(mockDataStore.numberOfElementInvocations, 1)
+                    XCTAssertEqual(mockDataStore.lastElementId, "Ted Bundy")
                 }
             }
         }

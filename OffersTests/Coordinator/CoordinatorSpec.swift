@@ -3,10 +3,9 @@
 // Copyright (c) 2019 piofusco. All rights reserved.
 //
 
-import UIKit
+import XCTest
 
 import Quick
-import Nimble
 
 @testable import Offers
 
@@ -24,9 +23,9 @@ class CoordinatorSpec: QuickSpec {
                     subject.start()
 
                     let lastPushedVC = mockNavigationController.lastPushedVC
-                    expect(lastPushedVC).to(beAnInstanceOf(OffersController.self))
+                    XCTAssert(lastPushedVC is OffersController)
                     let offersViewController = lastPushedVC as! OffersController
-                    expect(offersViewController.coordinator).to(be(subject))
+                    XCTAssert(offersViewController.coordinator === subject)
                 }
             }
 
@@ -42,9 +41,9 @@ class CoordinatorSpec: QuickSpec {
                     subject.viewOffer(offer: offer)
 
                     let lastPushedVC = mockNavigationController.lastPushedVC
-                    expect(lastPushedVC).to(beAnInstanceOf(OfferDetailController.self))
+                    XCTAssert(lastPushedVC is OfferDetailController)
                     let offersViewController = lastPushedVC as! OfferDetailController
-                    expect(offersViewController.coordinator).to(be(subject))
+                    XCTAssert(offersViewController.coordinator === subject)
                 }
             }
 
@@ -59,8 +58,8 @@ class CoordinatorSpec: QuickSpec {
 
                         subject.didFavoriteOffer(withId: "some id")
 
-                        expect(mockOffersService.numberOfToggleFavoriteOfferInvocations).to(equal(1))
-                        expect(mockOffersService.lastToggledOffer).to(equal("some id"))
+                        XCTAssertEqual(mockOffersService.numberOfToggleFavoriteOfferInvocations, 1)
+                        XCTAssertEqual(mockOffersService.lastToggledOffer, "some id")
                     }
                 }
             }

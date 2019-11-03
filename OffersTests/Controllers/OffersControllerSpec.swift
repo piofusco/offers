@@ -6,10 +6,9 @@
 //  Copyright © 2018 piofusco. All rights reserved.
 //
 
-import UIKit
+import XCTest
 
 import Quick
-import Nimble
 
 @testable import Offers
 
@@ -23,7 +22,7 @@ class OffersControllerSpec: QuickSpec {
 
                     subject.loadView()
 
-                    expect(mockOffersService.numberOfGetOfferInvocations).to(equal(1))
+                    XCTAssertEqual(mockOffersService.numberOfGetOfferInvocations, 1)
                 }
             }
 
@@ -47,21 +46,10 @@ class OffersControllerSpec: QuickSpec {
 
                     subject.didSelectOffer(offer: expectedOffer)
 
-                    expect(mockMainCoordinator.numberOfViewOfferInvocations).to(equal(1))
-                    expect(mockMainCoordinator.lastViewedOfferId).to(equal(expectedId))
+                    XCTAssertEqual(mockMainCoordinator.numberOfViewOfferInvocations, 1)
+                    XCTAssertEqual(mockMainCoordinator.lastViewedOfferId, expectedId)
                 }
             }
         }
-    }
-}
-
-class MockOffersView: OffersView {
-
-}
-
-class MockUICollectionView: UICollectionView {
-    var numberOfReloadDataInvocations = 0
-    override func reloadData() {
-        numberOfReloadDataInvocations += 1
     }
 }

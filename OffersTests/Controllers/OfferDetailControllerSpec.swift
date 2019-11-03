@@ -6,8 +6,9 @@
 //  Copyright © 2018 piofusco. All rights reserved.
 //
 
+import XCTest
+
 import Quick
-import Nimble
 
 @testable import Offers
 
@@ -32,7 +33,7 @@ class OfferDetailControllerSpec: QuickSpec {
 
                     subject.didFavoriteOffer(withId: expectedId)
 
-                    expect(mockCoordinator.lastFavoritedId).to(equal(expectedId))
+                    XCTAssertEqual(mockCoordinator.lastFavoritedId, expectedId)
                 }
             }
         }
