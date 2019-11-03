@@ -15,6 +15,7 @@ jobs:
           key: gem-cache-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
+      - run: mv Cartfile.resolved Carthage
       - restore_cache:
           keys:
             - carthage-cache-{{ checksum "Cartfile.resolved" }}
@@ -37,6 +38,7 @@ jobs:
           keys:
             - gem-cache-{{ checksum "Gemfile.lock" }}
             - gem-cache-
+      - run: bundle install --path vendor/bundle
       - restore_cache:
           keys:
             - carthage-cache-{{ checksum "Cartfile.resolved" }}
@@ -68,6 +70,7 @@ jobs:
           keys:
             - gem-cache-{{ checksum "Gemfile.lock" }}
             - gem-cache-
+      - run: bundle install --path vendor/bundle
       - restore_cache:
           keys:
             - carthage-cache-{{ checksum "Cartfile.resolved" }}
