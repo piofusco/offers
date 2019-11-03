@@ -67,11 +67,11 @@ platform :ios do
       scheme: 'Offers'
     )
     testflight(
-      app_identifier: ENV['APP_ID'],
+      app_identifier: 'io.piofusco.offers',
       ipa: 'build/Offers.ipa',
       skip_waiting_for_build_processing: true,
       team_id: ENV['TEAM_ID'],
-      username: ENV['ITUNES_CONNECT_ID'],
+      username: ENV['APP_STORE_CONNECT_ID'],
     )
   end
 end

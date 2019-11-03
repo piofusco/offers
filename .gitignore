@@ -16,6 +16,8 @@ Offers.xcodeproj/project.xcworkspace/xcuserdata/*
 
 Carthage/
 
+build/
+
 fastlane/report.xml
 fastlane/test_output/
 /Offers.xcodeproj/xcuserdata/gideon.xcuserdatad/xcschemes/
