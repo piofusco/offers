@@ -1,18 +1,15 @@
 version: 2
 jobs:
-  build-and-test:
+  build-dependencies:
     macos:
       xcode: "11.1.0"
     working_directory: /Users/distiller/project
-    environment:
-      FL_OUTPUT_DIR: output
-      FASTLANE_LANE: test
     steps:
       - checkout
       - restore_cache:
-          keys:
-            - gem-cache-{{ checksum "Gemfile.lock" }}
-            - gem-cache-
+        keys:
+          - gem-cache-{{ checksum "Gemfile.lock" }}
+          - gem-cache-
       - run: bundle install --path vendor/bundle
       - save_cache:
           key: gem-cache-{{ checksum "Gemfile.lock" }}
@@ -27,6 +24,15 @@ jobs:
           key: carthage-cache-{{ checksum "Cartfile.resolved" }}
           paths:
             - Carthage
+  unit-tests:
+    macos:
+      xcode: "11.1.0"
+    working_directory: /Users/distiller/project
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: test
+    steps:
+      - checkout
       - run:
           name: Run Unit Tests
           command: bundle exec fastlane unit_tests
@@ -41,8 +47,47 @@ jobs:
       - store_artifacts:
           path: ~/Library/Logs/scan
           destination: scan-logs
+  ui-tests:
+    macos:
+      xcode: "11.1.0"
+    working_directory: /Users/distiller/project
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: test
+    steps:
+      - checkout
+      - run:
+          name: Run Unit Tests
+          command: bundle exec fastlane unit_tests
+          environment:
+            SCAN_DEVICE: iPhone 5s
+            SCAN_SCHEME: WebTests
+      - store_test_results:
+          path: test_output/report.xml
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: scan-test-results
+      - store_artifacts:
+          path: ~/Library/Logs/scan
+          destination: scan-logs
+  deploy:
+    macos:
+      xcode: "11.1.0"
+    working_directory: /Users/distiller/project
+    steps:
+      - run: echo "Here's where I would deploy to TestFlight"
 workflows:
   version: 2
   build-and-test:
     jobs:
-      - build-and-test
+      - build-dependencies
+      - unit_tests:
+          requires:
+            - build
+      - ui_tests:
+          requires:
+            - build
+      - deploy:
+          requires:
+            - unit_tests
+            - ui_tests
