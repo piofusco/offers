@@ -92,9 +92,9 @@ extension OffersCollectionViewCell {
         }
 
         favoritedIcon.snp.makeConstraints { (make) -> Void in
-            make.trailing.equalTo(contentView)
-            make.center.equalTo(valueLabel.snp.center)
-            make.height.width.equalTo(15)
+            make.trailing.equalTo(imageView.snp.trailing).inset(5)
+            make.bottom.equalTo(imageView.snp.bottom).inset(5)
+            make.height.width.equalTo(20)
         }
 
         descriptionLabel.snp.makeConstraints { (make) -> Void in

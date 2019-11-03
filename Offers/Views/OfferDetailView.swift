@@ -12,54 +12,7 @@ protocol Favoritable: class {
 }
 
 class OfferDetailView: UIView {
-    private var nameLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private var descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private var termsLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private var currentValueLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.numberOfLines = 0
-        return label
-    }()
-
-    private var imageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFit
-        return imageView
-    }()
-
-    private var favoriteLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont.systemFont(ofSize: 15)
-        label.numberOfLines = 0
-        label.text = "Favorited"
-        return label
-    }()
-
-    private var favoriteButton: UIButton = {
-        let button = UIButton()
-        button.setImage(Images.favorited.image, for: .normal)
-        button.setImage(Images.favoritedFilled.image, for: .selected)
-        return button
-    }()
+    private let tableView = UITableView(frame: CGRect.zero)
 
     weak var delegate: Favoritable?
     private let offer: Offer
@@ -68,19 +21,53 @@ class OfferDetailView: UIView {
 
         super.init(frame: CGRect.zero)
 
-        setupView()
+        setupTableView()
         setupConstraints()
-        setupForOffer()
-
-        favoriteButton.addTarget(
-            self,
-            action: #selector(OfferDetailView.favoriteButtonTapped),
-            for: .touchUpInside
-        )
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) is not supported")
+    }
+}
+
+extension OfferDetailView: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        4
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: String(describing: OfferDetailTableViewCell.self),
+            for: indexPath) as? OfferDetailTableViewCell else {
+            fatalError("tableView(cellForRowAt:) could not dequeue cell")
+        }
+
+        switch indexPath.row {
+            case 0: cell.setContent(forLabel: "Name", forValue: offer.name)
+            case 1: cell.setContent(forLabel: "Description", forValue: offer.description)
+            case 2: cell.setContent(forLabel: "Terms", forValue: offer.terms)
+            case 3: cell.setContent(forLabel: "Current value", forValue: offer.currentValue)
+            default: break
+        }
+
+        return cell
+    }
+
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        guard let header = tableView.dequeueReusableHeaderFooterView(
+            withIdentifier: String(describing: OfferDetailHeaderView.self)
+        ) as? OfferDetailHeaderView else {
+            fatalError("tableView(viewForHeaderInSection:) could not dequeue header")
+        }
+
+        header.setupForURL(url: offer.url)
+        header.setupFavoritedButton(isFavorited: offer.favorited)
+        header.favoriteButton.addTarget(
+            self,
+            action: #selector(OfferDetailView.favoriteButtonTapped),
+            for: .touchUpInside
+        )
+        return header
     }
 }
 
@@ -92,70 +79,30 @@ extension OfferDetailView {
 }
 
 extension OfferDetailView {
-    private func setupView() {
-        backgroundColor = UIColor.white
-        addSubview(nameLabel)
-        addSubview(descriptionLabel)
-        addSubview(termsLabel)
-        addSubview(currentValueLabel)
-        addSubview(favoriteLabel)
-        addSubview(favoriteButton)
-        addSubview(imageView)
+    private func setupTableView() {
+        tableView.allowsSelection = false
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.estimatedRowHeight = 50
+        tableView.register(
+            OfferDetailHeaderView.self,
+            forHeaderFooterViewReuseIdentifier: String(describing: OfferDetailHeaderView.self)
+        )
+        tableView.register(
+            OfferDetailTableViewCell.self,
+            forCellReuseIdentifier: String(describing: OfferDetailTableViewCell.self)
+        )
+        tableView.rowHeight = UITableView.automaticDimension
+
+        addSubview(tableView)
     }
 
     private func setupConstraints() {
-        nameLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(self.snp.leading).inset(10)
-            make.top.equalTo(self.safeAreaLayoutGuide.snp.top).offset(10)
-            make.trailing.equalTo(self.snp.trailing).inset(10)
-        }
-
-        descriptionLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(self.snp.leading).inset(10)
-            make.top.equalTo(self.nameLabel.snp.bottom).offset(5)
-            make.trailing.equalTo(self.snp.trailing).inset(10)
-        }
-
-        termsLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(self.snp.leading).inset(10)
-            make.top.equalTo(self.descriptionLabel.snp.bottom).offset(5)
-            make.trailing.equalTo(self.snp.trailing).inset(10)
-        }
-
-        currentValueLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(self.snp.leading).inset(10)
-            make.top.equalTo(self.termsLabel.snp.bottom).offset(5)
-            make.trailing.equalTo(self.snp.trailing).inset(10)
-        }
-
-        favoriteLabel.snp.makeConstraints { (make) -> Void in
-            make.leading.equalTo(self.snp.leading).inset(10)
-            make.top.equalTo(self.currentValueLabel.snp.bottom).offset(20)
-        }
-
-        favoriteButton.snp.makeConstraints { (make) -> Void in
-            make.centerY.equalTo(favoriteLabel.snp.centerY)
-            make.trailing.equalTo(self.snp.trailing).inset(10)
-        }
-
-        imageView.snp.makeConstraints { (make) -> Void in
-            make.top.equalTo(self.favoriteLabel.snp.bottom).offset(20)
-            make.trailing.equalTo(self.snp.trailing).inset(10)
-            make.leading.equalTo(self.snp.leading).inset(10)
-            make.height.equalTo(self.snp.width).offset(30)
-        }
-    }
-
-    private func setupForOffer() {
-        nameLabel.text = "Name: \(offer.name)"
-        descriptionLabel.text = "Description: \(offer.description)"
-        termsLabel.text = "Terms: \(offer.terms)"
-        currentValueLabel.text = "Current value: \(offer.currentValue)"
-        favoriteButton.isSelected = offer.favorited
-        favoriteButton.accessibilityIdentifier = "FavoriteButton"
-        if let urlString = offer.url, let url = URL(string: urlString) {
-            imageView.kf.indicatorType = .activity
-            imageView.kf.setImage(with: url)
+        tableView.snp.makeConstraints { (make) -> Void in
+            make.leading.equalTo(self.snp.leading)
+            make.top.equalTo(self.safeAreaLayoutGuide.snp.top)
+            make.trailing.equalTo(self.snp.trailing)
+            make.bottom.equalTo(self.snp.bottom)
         }
     }
 }

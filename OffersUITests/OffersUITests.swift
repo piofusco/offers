@@ -27,11 +27,14 @@ class OffersUITests: XCTestCase {
         collectionCell1.tap()
 
         XCTAssertTrue(application.navigationBars["Offer Detail"].exists)
-        XCTAssertTrue(application.staticTexts["Name: Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges"].exists)
-        XCTAssertTrue(application.staticTexts["Description: Any variety - 2 ct. pack or larger"].exists)
-        XCTAssertTrue(application.staticTexts["Terms: Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub " +
-                "Sponges for any variety, 2 ct. pack or larger."].exists)
-        XCTAssertTrue(application.staticTexts["Current value: $0.75 Cash Back"].exists)
+        XCTAssertTrue(application.staticTexts["Name"].exists)
+        XCTAssertTrue(application.staticTexts["Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges"].exists)
+        XCTAssertTrue(application.staticTexts["Description"].exists)
+        XCTAssertTrue(application.staticTexts["Any variety - 2 ct. pack or larger"].exists)
+        XCTAssertTrue(application.staticTexts["Terms"].exists)
+        XCTAssertTrue(application.staticTexts["Rebate valid on Scotch-Brite® Scrub Dots Non-Scratch Scrub Sponges for any variety, 2 ct. pack or larger."].exists)
+        XCTAssertTrue(application.staticTexts["Current value"].exists)
+        XCTAssertTrue(application.staticTexts["$0.75 Cash Back"].exists)
 
         let offerOneFavoritedButton = application.buttons["FavoriteButton"]
         XCTAssertTrue(offerOneFavoritedButton.exists)
@@ -59,11 +62,14 @@ class OffersUITests: XCTestCase {
         collectionCell3.tap()
 
         XCTAssertTrue(application.navigationBars["Offer Detail"].exists)
-        XCTAssertTrue(application.staticTexts["Name: Girl Scout Cookie™ Inspired Baking Mix"].exists)
-        XCTAssertTrue(application.staticTexts["Description: Any variety - Any size"].exists)
-        XCTAssertTrue(application.staticTexts["Terms: Rebate valid on Girl Scout Cookie™ Inspired Baking Mix for any " +
-                "variety, any size."].exists)
-        XCTAssertTrue(application.staticTexts["Current value: $0.50 Cash Back"].exists)
+        XCTAssertTrue(application.staticTexts["Name"].exists)
+        XCTAssertTrue(application.staticTexts["Girl Scout Cookie™ Inspired Baking Mix"].exists)
+        XCTAssertTrue(application.staticTexts["Description"].exists)
+        XCTAssertTrue(application.staticTexts["Any variety - Any size"].exists)
+        XCTAssertTrue(application.staticTexts["Terms"].exists)
+        XCTAssertTrue(application.staticTexts["Rebate valid on Girl Scout Cookie™ Inspired Baking Mix for any variety, any size."].exists)
+        XCTAssertTrue(application.staticTexts["Current value"].exists)
+        XCTAssertTrue(application.staticTexts["$0.50 Cash Back"].exists)
 
         let offerTwoFavoritedButton = application.buttons["FavoriteButton"]
         XCTAssertTrue(offerTwoFavoritedButton.exists)
