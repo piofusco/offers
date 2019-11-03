@@ -94,7 +94,7 @@ jobs:
       xcode: "11.1.0"
     working_directory: /Users/distiller/project
     steps:
-      - run: echo "Here's where I would deploy to TestFlight"
+      - run: fastlane beta
 workflows:
   version: 2
   build-and-test:
