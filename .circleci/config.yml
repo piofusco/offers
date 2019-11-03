@@ -19,12 +19,12 @@ jobs:
           keys:
             - carthage-cache-{{ checksum "Cartfile.resolved" }}
             - carthage-cache-
-      - run: carthage bootstrap --platform ios
+      - run: bin/bootstrap-if-needed
       - save_cache:
           key: carthage-cache-{{ checksum "Cartfile.resolved" }}
           paths:
             - Carthage
-  unit-tests:
+  unit_tests:
     macos:
       xcode: "11.1.0"
     working_directory: /Users/distiller/project
@@ -33,6 +33,14 @@ jobs:
       FASTLANE_LANE: test
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - gem-cache-{{ checksum "Gemfile.lock" }}
+            - gem-cache-
+      - restore_cache:
+          keys:
+            - carthage-cache-{{ checksum "Cartfile.resolved" }}
+            - carthage-cache-
       - run:
           name: Run Unit Tests
           command: bundle exec fastlane unit_tests
@@ -47,7 +55,7 @@ jobs:
       - store_artifacts:
           path: ~/Library/Logs/scan
           destination: scan-logs
-  ui-tests:
+  ui_tests:
     macos:
       xcode: "11.1.0"
     working_directory: /Users/distiller/project
@@ -56,6 +64,14 @@ jobs:
       FASTLANE_LANE: test
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - gem-cache-{{ checksum "Gemfile.lock" }}
+            - gem-cache-
+      - restore_cache:
+          keys:
+            - carthage-cache-{{ checksum "Cartfile.resolved" }}
+            - carthage-cache-
       - run:
           name: Run Unit Tests
           command: bundle exec fastlane unit_tests
