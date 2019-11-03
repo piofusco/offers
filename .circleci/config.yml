@@ -94,6 +94,16 @@ jobs:
       xcode: "11.1.0"
     working_directory: /Users/distiller/project
     steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - gem-cache-{{ checksum "Gemfile.lock" }}
+            - gem-cache-
+      - run: bundle install --path vendor/bundle
+      - restore_cache:
+          keys:
+            - carthage-cache-{{ checksum "Cartfile.resolved" }}
+            - carthage-cache-
       - run: fastlane beta
 workflows:
   version: 2
