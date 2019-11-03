@@ -3,12 +3,22 @@ jobs:
   build:
     macos:
       xcode: "11.1.0"
+    working_directory: /Users/distiller/project
     environment:
       FL_OUTPUT_DIR: output
       FASTLANE_LANE: test
     steps:
       - checkout
-      - run: bundle install
+      - restore_cache:
+          keys:
+            - gem-cache-{{ checksum "Gemfile.lock" }}
+            - gem-cache-
+      - run:
+          bundle install --path vendor/bundle
+      - save_cache:
+          key: gem-cache-{{ checksum "Gemfile.lock" }}
+          paths:
+            - vendor/bundle
       - run: bin/bootstrap-if-needed
       - run:
           name: Run Unit Tests
@@ -24,3 +34,8 @@ jobs:
       - store_artifacts:
           path: ~/Library/Logs/scan
           destination: scan-logs
+workflows:
+  version: 2
+  build-test:
+    jobs:
+      - build-and-test
