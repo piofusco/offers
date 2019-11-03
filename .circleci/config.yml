@@ -13,13 +13,20 @@ jobs:
           keys:
             - gem-cache-{{ checksum "Gemfile.lock" }}
             - gem-cache-
-      - run:
-          bundle install --path vendor/bundle
+      - run: bundle install --path vendor/bundle
       - save_cache:
           key: gem-cache-{{ checksum "Gemfile.lock" }}
           paths:
             - vendor/bundle
-      - run: bin/bootstrap-if-needed
+      - restore_cache:
+          keys:
+            - carthage-cache-{{ checksum "Cartfile.resolved" }}
+            - carthage-cache-
+      - run: carthage bootstrap --platform ios
+      - save_cache:
+          key: carthage-cache-{{ checksum "Cartfile.resolved" }}
+          paths:
+            - Carthage
       - run:
           name: Run Unit Tests
           command: bundle exec fastlane unit_tests
