@@ -24,8 +24,8 @@ class CoordinatorSpec: QuickSpec {
                     subject.start()
 
                     let lastPushedVC = mockNavigationController.lastPushedVC
-                    expect(lastPushedVC).to(beAnInstanceOf(OffersViewController.self))
-                    let offersViewController = lastPushedVC as! OffersViewController
+                    expect(lastPushedVC).to(beAnInstanceOf(OffersController.self))
+                    let offersViewController = lastPushedVC as! OffersController
                     expect(offersViewController.coordinator).to(be(subject))
                 }
             }
@@ -42,8 +42,8 @@ class CoordinatorSpec: QuickSpec {
                     subject.viewOffer(offer: offer)
 
                     let lastPushedVC = mockNavigationController.lastPushedVC
-                    expect(lastPushedVC).to(beAnInstanceOf(OfferDetailViewController.self))
-                    let offersViewController = lastPushedVC as! OfferDetailViewController
+                    expect(lastPushedVC).to(beAnInstanceOf(OfferDetailController.self))
+                    let offersViewController = lastPushedVC as! OfferDetailController
                     expect(offersViewController.coordinator).to(be(subject))
                 }
             }

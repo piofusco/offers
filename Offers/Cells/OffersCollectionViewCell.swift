@@ -45,12 +45,23 @@ class OffersCollectionViewCell: UICollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        isHighlighted = false
+
         setupViews()
         setupConstraints()
     }
 
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override var isHighlighted: Bool {
+        get {
+            false
+        }
+        set {
+            super.isHighlighted = false
+        }
     }
 }
 

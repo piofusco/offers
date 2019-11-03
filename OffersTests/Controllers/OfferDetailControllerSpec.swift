@@ -11,13 +11,13 @@ import Nimble
 
 @testable import Offers
 
-class OfferDetailViewControllerSpec: QuickSpec {
+class OfferDetailControllerSpec: QuickSpec {
     override func spec() {
         describe("OfferDetailViewController") {
             describe("favoriting an offer") {
                 it("should call didFavoriteOffer on coordinator with offer id") {
                     let expectedId = "some id"
-                    let subject = OfferDetailViewController(
+                    let subject = OfferDetailController(
                         offer: Offer(
                             id: expectedId,
                             name: "",

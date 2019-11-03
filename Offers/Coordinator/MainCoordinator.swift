@@ -18,14 +18,14 @@ class MainCoordinator: Coordinator, Favoritable {
     }
 
     func start() {
-        let vc = OffersViewController(offersService: offersService)
+        let vc = OffersController(offersService: offersService)
         vc.navigationItem.title = "Offers"
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: false)
     }
 
     func viewOffer(offer: Offer) {
-        let vc = OfferDetailViewController(offer: offer)
+        let vc = OfferDetailController(offer: offer)
         vc.navigationItem.title = "Offer Detail"
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
