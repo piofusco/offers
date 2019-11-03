@@ -1,0 +1,26 @@
+version: 2
+jobs:
+  build-and-test:
+    macos:
+      xcode: "11.1"
+    environment:
+      FL_OUTPUT_DIR: output
+      FASTLANE_LANE: test
+    steps:
+      - checkout
+      - run: bundle install
+      - run: bin/bootstrap-if-needed
+      - run:
+          name: Build and run tests
+          command: bundle exec fastlane test
+          environment:
+            SCAN_DEVICE: iPhone 62
+            SCAN_SCHEME: WebTests
+      - store_test_results:
+          path: test_output/report.xml
+      - store_artifacts:
+          path: /tmp/test-results
+          destination: scan-test-results
+      - store_artifacts:
+          path: ~/Library/Logs/scan
+          destination: scan-logs
