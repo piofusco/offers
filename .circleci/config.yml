@@ -95,7 +95,7 @@ jobs:
     working_directory: /Users/distiller/project
     steps:
       - checkout
-      - run: bundle exec fastlane beta
+      - run: fastlane beta
 workflows:
   version: 2
   build-and-test:
