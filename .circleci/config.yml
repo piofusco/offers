@@ -95,6 +95,10 @@ jobs:
     working_directory: /Users/distiller/project
     steps:
       - checkout
+      - restore_cache:
+          keys:
+            - carthage-cache-{{ checksum "Cartfile.resolved" }}
+            - carthage-cache-
       - run: fastlane beta
 workflows:
   version: 2
