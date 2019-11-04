@@ -52,7 +52,7 @@ platform :ios do
       target: "Offers"
     )
     commit_version_bump(
-      message: 'Version Bump [ci skip]: #{version}',
+      message: "Version Bump [ci skip]: #{version}",
       xcodeproj: 'Offers.xcodeproj'
     )
     push_to_git_remote(
