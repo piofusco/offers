@@ -59,7 +59,7 @@ platform :ios do
     )
 
     match(
-      app_identifier: ENV['APP_ID'],
+      app_identifier: 'io.piofusco.offers',
       type: 'appstore'
     )
 
