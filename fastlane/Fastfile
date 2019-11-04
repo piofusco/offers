@@ -58,8 +58,12 @@ platform :ios do
   lane :beta do
     ensure_git_status_clean
     increment_build_number
+    version = get_version_number(
+      xcodeproj: "Offers.xcodeproj",
+      target: "Offers"
+    )
     commit_version_bump(
-      message: 'Version Bump',
+      message: 'Version Bump [ci skip]: #{version}',
       xcodeproj: 'Offers.xcodeproj'
     )
     push_to_git_remote(
