@@ -49,3 +49,7 @@ This project is setup to deploy to TestFlight through [CircleCi 2.0 and Workflow
 ### 🚀 Manually Deploying 🚀
 
 To deploy a build manually, simply run `bundle exec fastlane beta`.
+
+### Onboarding 
+
+Wanna be invited to the beta? Click [here](https://fierce-fjord-36618.herokuapp.com/)
