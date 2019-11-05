@@ -1,19 +1,13 @@
 //
-// Created by gideon on 10/28/19.
+// Created by gideon on 11/4/19.
 // Copyright (c) 2019 piofusco. All rights reserved.
 //
 
-import UIKit
-
 @testable import Offers
 
-class MockFavoriatable: MainCoordinator {
-    init() {
-        super.init(navigationController: UINavigationController(), offersService: MockOffersService())
-    }
-
+class MockFavoritable: Favoritable {
     var lastFavoritedId = ""
-    override func didFavoriteOffer(withId id: String) {
+    func didFavoriteOffer(withId id: String) {
         lastFavoritedId = id
     }
 }

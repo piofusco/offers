@@ -28,7 +28,7 @@ class OfferDetailControllerSpec: QuickSpec {
                             currentValue: ""
                         )
                     )
-                    let mockCoordinator = MockFavoriatable()
+                    let mockCoordinator = MockCoordinator()
                     subject.coordinator = mockCoordinator
 
                     subject.didFavoriteOffer(withId: expectedId)

@@ -29,14 +29,23 @@ class OffersServiceSpec: QuickSpec {
             }
 
             describe("toggleFavoriteOffer") {
-                it("given id for an existing offer, data store should retrieve/update element with matching id") {
-                    mockDataStore.stubbedElement = Offer(id: "110579", name: "", url: "", description: "", terms: "", currentValue: "")
+                it("given id for an existing offer, data store should retrieve/update element with matching id and trigger callback") {
+                    let expectedOffer = Offer(id: "110579", name: "", url: "", description: "", terms: "", currentValue: "")
+                    mockDataStore.stubbedElement = expectedOffer
+                    var didCallUpdateOffer = false
+                    var lastUpdatedOffer: Offer? = nil
+                    subject.didUpdateOffer = { offer in
+                        didCallUpdateOffer = true
+                        lastUpdatedOffer = offer
+                    }
 
                     subject.toggleFavoriteOffer(forId: "110579")
 
+                    XCTAssertTrue(didCallUpdateOffer)
+                    XCTAssertEqual(lastUpdatedOffer!.id, expectedOffer.id)
                     XCTAssertEqual(mockDataStore.numberOfElementInvocations, 1)
                     XCTAssertEqual(mockDataStore.numberOfUpdateInvocations, 1)
-                    XCTAssertEqual(mockDataStore.lastUpdatedElementId, "110579")
+                    XCTAssertEqual(mockDataStore.lastUpdatedElementId, expectedOffer.id)
                 }
             }
 

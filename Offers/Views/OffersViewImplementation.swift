@@ -11,7 +11,11 @@ protocol Selectable: class {
     func didSelectOffer(offer: Offer)
 }
 
-class OffersView: UIView {
+protocol OffersView: class {
+    func updateOffer(offer: Offer)
+}
+
+class OffersViewImplementation: UIView {
     private var layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         let margin = CGFloat(12)
@@ -44,7 +48,18 @@ class OffersView: UIView {
     }
 }
 
-extension OffersView {
+extension OffersViewImplementation: OffersView {
+    func updateOffer(offer: Offer) {
+        guard let index = self.offers.firstIndex(where: { $0.id == offer.id }) else {
+            return
+        }
+
+        offers[index] = offer
+        self.collectionView.reloadItems(at: [IndexPath(row: index, section: 0)])
+    }
+}
+
+extension OffersViewImplementation {
     private func setupViews() {
         collectionView = UICollectionView(frame: self.bounds, collectionViewLayout: layout)
         collectionView.backgroundColor = UIColor.white
@@ -63,7 +78,7 @@ extension OffersView {
     }
 }
 
-extension OffersView: UICollectionViewDataSource {
+extension OffersViewImplementation: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath)
             -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "offerCell",
@@ -80,7 +95,7 @@ extension OffersView: UICollectionViewDataSource {
     }
 }
 
-extension OffersView: UICollectionViewDelegate {
+extension OffersViewImplementation: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let selectedOffer = offers[indexPath.row]
         delegate?.didSelectOffer(offer: selectedOffer)

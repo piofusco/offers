@@ -11,14 +11,17 @@ import UIKit
 class OffersController: UIViewController {
     weak var coordinator: MainCoordinator?
 
-    private let offersService: OffersService
-    private var primaryView: OffersView
+    private var offersService: OffersService
+    private var primaryView: OffersViewImplementation
     init(offersService: OffersService) {
         self.offersService = offersService
-        self.primaryView = OffersView(offers: offersService.getOffers())
+        self.primaryView = OffersViewImplementation(offers: offersService.getOffers())
 
         super.init(nibName: nil, bundle: nil)
 
+        self.offersService.didUpdateOffer = { offer in
+            self.primaryView.updateOffer(offer: offer)
+        }
         self.primaryView.delegate = self
     }
 
@@ -28,15 +31,6 @@ class OffersController: UIViewController {
 
     override func loadView() {
         self.view = self.primaryView
-    }
-
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-
-        self.primaryView = OffersView(offers: offersService.getOffers())
-        self.primaryView.delegate = self
-        self.primaryView.collectionView.reloadData()
-        self.view = primaryView
     }
 }
 

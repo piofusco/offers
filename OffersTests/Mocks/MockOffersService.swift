@@ -6,6 +6,8 @@
 @testable import Offers
 
 class MockOffersService: OffersService {
+    var didUpdateOffer: ((Offer) -> Void)? = nil
+
     var numberOfGetOfferInvocations = 0
     var stubbedOffers: [Offer] = []
     func getOffers() -> [Offer] {

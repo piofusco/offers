@@ -17,7 +17,7 @@ class OfferDetailViewSpec: QuickSpec {
                     let expectedId = "some id"
                     let offer = Offer(id: expectedId, name: "", url: "", description: "", terms: "", currentValue: "")
                     let subject = OfferDetailView(offer: offer)
-                    let mockFavoritableDelegate = MockFavoriatable()
+                    let mockFavoritableDelegate = MockFavoritable()
                     subject.delegate = mockFavoritableDelegate
 
                     subject.favoriteButtonTapped(sender: UIButton())

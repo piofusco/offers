@@ -7,6 +7,7 @@
 //
 
 import XCTest
+import UIKit
 
 import Quick
 
@@ -16,7 +17,7 @@ class OffersControllerSpec: QuickSpec {
     override func spec() {
         describe("OffersController") {
             describe("loadView") {
-                it("should assign primary view to be an OffersView and call elements on services") {
+                it("offers service shoud call get offers") {
                     let mockOffersService = MockOffersService()
                     let subject = OffersController(offersService: mockOffersService)
 
@@ -38,7 +39,7 @@ class OffersControllerSpec: QuickSpec {
                         currentValue: ""
                     )
                     let subject = OffersController(offersService: MockOffersService())
-                    let mockMainCoordinator = MockMainCoordinator(
+                    let mockMainCoordinator = MockCoordinator(
                         navigationController: UINavigationController(),
                         offersService: MockOffersService()
                     )
