@@ -6,32 +6,28 @@
 @testable import Offers
 
 class MockDataStore: DataStore {
+    typealias T = Offer
+
     var numberOfUpdateInvocations = 0
     var lastUpdatedElementId = ""
-    func update<T: Codable>(element: T) {
+    func update(element: T) {
         numberOfUpdateInvocations += 1
-        if let offer = element as? Offer {
-            lastUpdatedElementId = offer.id
-        }
+        lastUpdatedElementId = element.id
     }
 
     var numberOfElementInvocations = 0
     var lastElementId = ""
-    var stubbedElement: Codable? = nil
-    func element<T: Codable>(id: String) -> T? {
+    var stubbedElement: T? = nil
+    func element(id: String) -> T? {
         numberOfElementInvocations += 1
         lastElementId = id
-        if let element: T = stubbedElement as? T {
-            return element
-        } else {
-            return nil
-        }
+        return stubbedElement
     }
 
     var numberOfElementsInvocations = 0
-    var stubbedElements = [Codable]()
-    func elements<T: Codable>() -> [T] {
+    var stubbedElements = [T]()
+    func elements() -> [T] {
         numberOfElementsInvocations += 1
-        return stubbedElements as! [T]
+        return stubbedElements
     }
 }

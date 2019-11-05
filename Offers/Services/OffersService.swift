@@ -11,10 +11,10 @@ protocol OffersService {
     func toggleFavoriteOffer(forId id: String)
 }
 
-class OffersServiceImplementation: OffersService {
-    private var dataStore: DataStore
+class OffersServiceImplementation<T: DataStore>: OffersService where T.T == Offer {
+    private var dataStore: T
 
-    init(dataStore: DataStore) {
+    init(dataStore: T) {
         self.dataStore = dataStore
     }
 

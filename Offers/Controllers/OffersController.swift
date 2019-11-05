@@ -8,8 +8,6 @@
 
 import UIKit
 
-import SnapKit
-
 class OffersController: UIViewController {
     weak var coordinator: MainCoordinator?
 

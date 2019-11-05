@@ -6,55 +6,46 @@
 import Foundation
 
 protocol DataStore: class {
-    func elements<T: Codable>() -> [T]
-    func element<T: Codable>(id: String) -> T?
-    func update<T: Codable>(element: T)
+    associatedtype T where T: Codable
+
+    func elements() -> [T]
+    func element(id: String) -> T?
+    func update(element: T)
 }
 
-class OffersDataStore: DataStore {
-    private var offersInMemory: [Offer] = []
+protocol Idable {
+    var id: String { get }
+}
+
+class DataStoreImplementation<Element>: DataStore where Element: Codable & Idable {
+    typealias T = Element
+    private var offersInMemory: [T] = []
 
     init() {
         if let path = Bundle.main.path(forResource: "offers", ofType: "json") {
             do {
                 let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
-                offersInMemory = try JSONDecoder().decode([Offer].self, from: data)
+                offersInMemory = try JSONDecoder().decode([T].self, from: data)
             } catch {
                 print("could not load initial json: \(error.localizedDescription)")
             }
         }
     }
 
-    func element<Offer>(id: String) -> Offer? {
-        for (offer) in offersInMemory {
-            if (offer.id == id) {
-                if let returnOffer = offer as? Offer {
-                    return returnOffer
-                }
-            }
+    func element(id: String) -> T? {
+        offersInMemory.first {
+            $0.id == id
         }
-
-        return nil
     }
 
-    func elements<Codable>() -> [Codable] {
-        guard let elements: [Codable] = offersInMemory as? [Codable] else {
-            return []
-        }
-
-        return elements
+    func elements() -> [T] {
+        offersInMemory
     }
 
-    func update<Codable>(element: Codable) {
-        guard let offerToUpdate = element as? Offer else {
+    func update(element: T) {
+        guard let index = offersInMemory.firstIndex(where: { $0.id == element.id }) else {
             return
         }
-
-        for (index, offer) in offersInMemory.enumerated() {
-            if (offer.id == offerToUpdate.id) {
-                offersInMemory[index].favorited = !offersInMemory[index].favorited
-                return
-            }
-        }
+        offersInMemory[index] = element
     }
 }

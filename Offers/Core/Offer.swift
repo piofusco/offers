@@ -5,7 +5,7 @@
 
 import Foundation
 
-struct Offer: Codable {
+struct Offer: Codable, Idable {
     let id: String
     let name: String
     let url: String?

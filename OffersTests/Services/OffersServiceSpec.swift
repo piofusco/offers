@@ -11,7 +11,7 @@ import Quick
 
 class OffersServiceSpec: QuickSpec {
     override func spec() {
-        var subject: OffersServiceImplementation!
+        var subject: OffersServiceImplementation<MockDataStore>!
         var mockDataStore: MockDataStore!
 
         beforeEach {
