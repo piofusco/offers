@@ -45,19 +45,6 @@ platform :ios do
 
   desc 'Deploy to TestFlight'
   lane :beta do
-    ensure_git_status_clean
-    increment_build_number
-    build_number = get_build_number(
-      xcodeproj: "Offers.xcodeproj"
-    )
-    commit_version_bump(
-      message: "Build Number Bump [ci skip]: #{build_number}",
-      xcodeproj: 'Offers.xcodeproj'
-    )
-    push_to_git_remote(
-      remote: 'origin'
-    )
-
     match(
       app_identifier: 'io.piofusco.offers',
       type: 'appstore'
@@ -75,6 +62,19 @@ platform :ios do
       skip_waiting_for_build_processing: true,
       team_id: ENV['TEAM_ID'],
       username: ENV['APP_STORE_CONNECT_ID'],
+    )
+
+    ensure_git_status_clean
+    increment_build_number
+    build_number = get_build_number(
+      xcodeproj: "Offers.xcodeproj"
+    )
+    commit_version_bump(
+      message: "Build Number Bump [ci skip]: #{build_number}",
+      xcodeproj: 'Offers.xcodeproj'
+    )
+    push_to_git_remote(
+      remote: 'origin'
     )
   end
 end
