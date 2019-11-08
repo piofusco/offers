@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let navigationController = UINavigationController()
         let offersDataStore = DataStoreImplementation<Offer>()
-        let offersService = OffersServiceImplementation(dataStore: offersDataStore)
+        let offersService = OffersDataStoreService(dataStore: offersDataStore)
         coordinator = MainCoordinator(
             navigationController: navigationController,
             offersService: offersService

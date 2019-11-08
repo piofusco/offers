@@ -78,6 +78,27 @@ class HttpClientSpec: QuickSpec {
                         XCTAssertEqual(receivedResponse as! HTTPURLResponse, mockSession.nextURLResponse)
                         XCTAssertNil(receivedError)
                     }
+
+                    it("with a status code of 500, callback should return url response") {
+                        mockSession.nextData = Data(base64Encoded: "")
+                        mockSession.nextURLResponse = HTTPURLResponse(
+                            url: expectedURL,
+                            statusCode: 500,
+                            httpVersion: nil,
+                            headerFields: [:]
+                        )
+                        let subject = OffersClient(session: mockSession)
+
+                        subject.get(url: expectedURL) { data, response, error in
+                            receivedData = data
+                            receivedResponse = response
+                            receivedError = error
+                        }
+
+                        XCTAssertNil(receivedData)
+                        XCTAssertEqual(receivedResponse as! HTTPURLResponse, mockSession.nextURLResponse)
+                        XCTAssertNil(receivedError)
+                    }
                 }
 
                 describe("on error") {
@@ -99,10 +120,8 @@ class HttpClientSpec: QuickSpec {
             }
 
             describe("POST") {
-                let postBody = Data(base64Encoded: "")!
-
                 describe("on success") {
-                    it("session should make POST request with expected URL, expected data, and trigger callback") {
+                    it("session should make POST request with expected URL and trigger callback") {
                         var didTriggerCallback = false
                         let nextURLSessionDataTask = MockURLSessionDataTask()
                         mockSession = MockURLSession(nextURLSessionDataTask: nextURLSessionDataTask)
@@ -115,7 +134,7 @@ class HttpClientSpec: QuickSpec {
                         )
                         let subject = OffersClient(session: mockSession)
 
-                        subject.post(url: expectedURL, data: postBody) { data, response, error in
+                        subject.post(url: expectedURL) { data, response, error in
                             didTriggerCallback = true
                             receivedData = data
                             receivedResponse = response
@@ -127,7 +146,6 @@ class HttpClientSpec: QuickSpec {
                         XCTAssertEqual(nextURLSessionDataTask.numberOfResumeInvocations, 1)
                         XCTAssertEqual(mockSession.lastHTTPMethod, "POST")
                         XCTAssertEqual(receivedData, mockSession.nextData)
-                        XCTAssertEqual(postBody, mockSession.lastData)
                         XCTAssertNil(receivedResponse)
                         XCTAssertNil(receivedError)
                     }
@@ -144,7 +162,28 @@ class HttpClientSpec: QuickSpec {
                         )
                         let subject = OffersClient(session: mockSession)
 
-                        subject.post(url: expectedURL, data: postBody) { data, response, error in
+                        subject.post(url: expectedURL) { data, response, error in
+                            receivedData = data
+                            receivedResponse = response
+                            receivedError = error
+                        }
+
+                        XCTAssertNil(receivedData)
+                        XCTAssertEqual(receivedResponse as! HTTPURLResponse, mockSession.nextURLResponse)
+                        XCTAssertNil(receivedError)
+                    }
+
+                    it("with a status code of 500, callback should return url response") {
+                        mockSession.nextData = Data(base64Encoded: "")
+                        mockSession.nextURLResponse = HTTPURLResponse(
+                            url: expectedURL,
+                            statusCode: 500,
+                            httpVersion: nil,
+                            headerFields: [:]
+                        )
+                        let subject = OffersClient(session: mockSession)
+
+                        subject.post(url: expectedURL) { data, response, error in
                             receivedData = data
                             receivedResponse = response
                             receivedError = error
@@ -161,7 +200,7 @@ class HttpClientSpec: QuickSpec {
                         mockSession.nextError = NSError(domain: "somethin' wrong", code: -9)
                         let subject = OffersClient(session: mockSession)
 
-                        subject.post(url: expectedURL, data: postBody) { data, response, error in
+                        subject.post(url: expectedURL) { data, response, error in
                             receivedData = data
                             receivedResponse = response
                             receivedError = error

@@ -5,12 +5,12 @@
 
 import Foundation
 
-protocol HttpClient {
+protocol HTTPClient {
     func get(url: URL, callback: @escaping (Data?, URLResponse?, Error?) -> Void)
-    func post(url: URL, data: Data, callback: @escaping (Data?, URLResponse?, Error?) -> Void)
+    func post(url: URL, callback: @escaping (Data?, URLResponse?, Error?) -> Void)
 }
 
-class OffersClient: HttpClient {
+class OffersClient: HTTPClient {
     private let session: URLSession
     init(session: URLSession) {
         self.session = session
@@ -30,7 +30,7 @@ class OffersClient: HttpClient {
                     if requestResponse.statusCode == 200 {
                         callback(responseData, nil, nil)
                         return
-                    } else if requestResponse.statusCode == 400 {
+                    } else if 400...500 ~= requestResponse.statusCode {
                         callback(nil, response, nil)
                         return
                     }
@@ -41,10 +41,9 @@ class OffersClient: HttpClient {
         task.resume()
     }
 
-    func post(url: URL, data: Data, callback: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func post(url: URL, callback: @escaping (Data?, URLResponse?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.httpBody = data
         let task = session.dataTask(with: request) { responseData, requestResponse, error in
             if let _ = error {
                 callback(nil, nil, error)
@@ -56,7 +55,7 @@ class OffersClient: HttpClient {
                     if requestResponse.statusCode == 200 {
                         callback(responseData, nil, nil)
                         return
-                    } else if requestResponse.statusCode == 400 {
+                    } else if 400...500 ~= requestResponse.statusCode  {
                         callback(nil, requestResponse, nil)
                         return
                     }

@@ -12,28 +12,3 @@ protocol OffersService {
 
     var didUpdateOffer: ((Offer) -> Void)? { get set }
 }
-
-class OffersServiceImplementation<T: DataStore>: OffersService where T.T == Offer {
-    private var dataStore: T
-    var didUpdateOffer: ((Offer) -> Void)?
-
-    init(dataStore: T) {
-        self.dataStore = dataStore
-    }
-
-    func toggleFavoriteOffer(forId id: String) {
-        if var offer: Offer = dataStore.element(id: id) {
-            offer.favorited = !offer.favorited
-            dataStore.update(element: offer)
-            didUpdateOffer?(offer)
-        }
-    }
-
-    func getOffer(forId id: String) -> Offer? {
-        dataStore.element(id: id)
-    }
-
-    func getOffers() -> [Offer] {
-        dataStore.elements()
-    }
-}

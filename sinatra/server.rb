@@ -2,8 +2,6 @@ require 'sinatra'
 require 'sinatra/reloader'
 require 'json'
 
-@@offers = JSON.parse(File.read("offers.json")).map { |offer| Offer.new(offer) }
-
 class Offer
   attr_reader :id, :url, :name, :description, :terms, :current_value, :favorited
   attr_writer :favorited
@@ -31,13 +29,23 @@ class Offer
   end
 end
 
+@@offers = JSON.parse(File.read("offers.json")).map { |offer| Offer.new(offer) }
+
 get '/offers' do
   content_type :json
   @@offers.map { |offer| offer.to_json }.to_json
 end
 
-post '/offers/:id/offer' do
+get '/offers/:id/offer' do
+  content_type :json
   id = params['id']
-  offer_to_update = @@offers.first { |offer| offer.id == id }
-  offer_to_update.favorited = !offer_to_update.favorited
+  index_to_update = @@offers.find_index { |offer| offer.id == id }
+  @@offers[index_to_update].to_s.to_json
+end
+
+post '/offers/:id/offer' do
+  content_type :json
+  id = params['id']
+  index_to_update = @@offers.find_index { |offer| offer.id == id }
+  @@offers[index_to_update].favorited = !@@offers[index_to_update].favorited
 end

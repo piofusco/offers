@@ -1,5 +1,5 @@
 //
-// Created by gideon on 10/28/19.
+// Created by gideon on 11/8/19.
 // Copyright (c) 2019 piofusco. All rights reserved.
 //
 
@@ -9,17 +9,17 @@ import Quick
 
 @testable import Offers
 
-class OffersServiceSpec: QuickSpec {
+class OffersDataStoreServiceSpec: QuickSpec {
     override func spec() {
-        var subject: OffersServiceImplementation<MockDataStore>!
-        var mockDataStore: MockDataStore!
+        describe("OffersServiceDataStore") {
+            var subject: OffersDataStoreService<MockDataStore>!
+            var mockDataStore: MockDataStore!
 
-        beforeEach {
-            mockDataStore = MockDataStore()
-            subject = OffersServiceImplementation(dataStore: mockDataStore)
-        }
+            beforeEach {
+                mockDataStore = MockDataStore()
+                subject = OffersDataStoreService(dataStore: mockDataStore)
+            }
 
-        describe("OffersService") {
             describe("getOffers") {
                 it("data store should return retrieve all offers") {
                     let _ = subject.getOffers()

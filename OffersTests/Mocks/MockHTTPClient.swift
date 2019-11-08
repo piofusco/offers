@@ -7,34 +7,23 @@ import Foundation
 
 @testable import Offers
 
-class MockURLSession: URLSession {
-    private let mockURLSessionDataTask: URLSessionDataTask
-    init(nextURLSessionDataTask: URLSessionDataTask) {
-        self.mockURLSessionDataTask = nextURLSessionDataTask
-
-        super.init()
-    }
-
-    var lastData: Data?
-    var lastURL = URL(string: "")
-    var lastHTTPMethod = ""
-
+class MockHTTPClient: HTTPClient {
     var nextData: Data?
-    var nextURLResponse: URLResponse?
+    var nextResponse: URLResponse?
     var nextError: Error?
-    override func dataTask(with request: URLRequest,
-                           completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
-        lastData = request.httpBody
-        lastURL = request.url
-        lastHTTPMethod = request.httpMethod!
-        completionHandler(nextData, nextURLResponse, nextError)
-        return mockURLSessionDataTask
-    }
-}
 
-class MockURLSessionDataTask: URLSessionDataTask {
-    var numberOfResumeInvocations = 0
-    override func resume() {
-        numberOfResumeInvocations += 1
+    var lastURL: URL?
+    var numberOfGetInvocations = 0
+    func get(url: URL, callback: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        callback(nextData, nextResponse, nextError)
+        numberOfGetInvocations += 1
+        lastURL = url
+    }
+
+    var numberOfPostInvocations = 0
+    func post(url: URL, callback: @escaping (Data?, URLResponse?, Error?) -> Void) {
+        callback(nextData, nextResponse, nextError)
+        numberOfPostInvocations += 1
+        lastURL = url
     }
 }
