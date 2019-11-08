@@ -32,11 +32,14 @@ All:  `fastlane tests`
 
 ### 🔑 Code Signing [with Match](https://codesigning.guide/) 🔑
 
-This project is configured to have Fastlane/Match handle code signing. All of the certificates live in a [private repository](https://github.com/piofusco/offers-certificates). 
+This project is configured to have Fastlane/Match handle code signing. All of the certificates live in a 
+[private repository](https://github.com/piofusco/offers-certificates). 
 
 ### ⚙️ Continuous Integration/Deployment ⚙️
 
-This project is setup to deploy to TestFlight through [CircleCi 2.0 and Workflows](https://circleci.com/gh/piofusco/offers). Here's a short break down of what _happens each time a commit is pushed to master (no matter the branch)_(for more info, checkout the `config.yml`:
+This project is setup to deploy to TestFlight through 
+[CircleCi 2.0 and Workflows](https://circleci.com/gh/piofusco/offers). Here's a short break down of what _happens each 
+time a commit is pushed to master (no matter the branch)_(for more info, checkout the `config.yml`:
 
 1. Build dependencies
 - checkout repo
