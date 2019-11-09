@@ -12,15 +12,17 @@ import Quick
 class OffersHTTPServiceSpec: QuickSpec {
     override func spec() {
         describe("OffersHTTPService") {
+            let happyHTTPResponse = HTTPURLResponse(
+                url: URL(string: "www.googles.com")!,
+                statusCode: 200,
+                httpVersion: nil,
+                headerFields: [:]
+            )
+
             describe("getOffers") {
-                fit("HTTP client should call get and correctly parse JSON into a list of Offers") {
+                it("HTTP client should call get and correctly parse JSON into a list of Offers") {
                     let mockHTTPClient = MockHTTPClient()
-                    mockHTTPClient.nextResponse = HTTPURLResponse(
-                        url: URL(string: "www.googles.com")!,
-                        statusCode: 200,
-                        httpVersion: nil,
-                        headerFields: [:]
-                    )
+                    mockHTTPClient.nextResponse = happyHTTPResponse
                     mockHTTPClient.nextData = try! JSONEncoder().encode(
                         [
                             Offer(id: "", name: "", url: "", description: "", terms: "", currentValue: ""),
@@ -39,12 +41,7 @@ class OffersHTTPServiceSpec: QuickSpec {
 
                 it("if JSON cannot be parsed Offers returned should be empty") {
                     let mockHTTPClient = MockHTTPClient()
-                    mockHTTPClient.nextResponse = HTTPURLResponse(
-                        url: URL(string: "www.googles.com")!,
-                        statusCode: 200,
-                        httpVersion: nil,
-                        headerFields: [:]
-                    )
+                    mockHTTPClient.nextResponse = happyHTTPResponse
                     mockHTTPClient.nextData = Data(base64Encoded: "")
                     let subject = OffersHTTPService(httpClient: mockHTTPClient)
 
@@ -60,12 +57,7 @@ class OffersHTTPServiceSpec: QuickSpec {
                 it("HTTP client should call get offer for given id and correctly parse JSON into an Offer") {
                     let expectedOffer = Offer(id: "expectedId", name: "", url: "", description: "", terms: "", currentValue: "")
                     let mockHTTPClient = MockHTTPClient()
-                    mockHTTPClient.nextResponse = HTTPURLResponse(
-                        url: URL(string: "www.googles.com")!,
-                        statusCode: 200,
-                        httpVersion: nil,
-                        headerFields: [:]
-                    )
+                    mockHTTPClient.nextResponse = happyHTTPResponse
                     mockHTTPClient.nextData = try! JSONEncoder().encode(expectedOffer)
                     let subject = OffersHTTPService(httpClient: mockHTTPClient)
 
@@ -96,12 +88,7 @@ class OffersHTTPServiceSpec: QuickSpec {
                     var didUpdateOffer = false
                     var lastUpdatedOfferId = ""
                     let mockHTTPClient = MockHTTPClient()
-                    mockHTTPClient.nextResponse = HTTPURLResponse(
-                        url: URL(string: "www.googles.com")!,
-                        statusCode: 200,
-                        httpVersion: nil,
-                        headerFields: [:]
-                    )
+                    mockHTTPClient.nextResponse = happyHTTPResponse
                     mockHTTPClient.nextData = try! JSONEncoder().encode(expectedOffer)
                     let subject = OffersHTTPService(httpClient: mockHTTPClient)
                     subject.didUpdateOffer = { offer in

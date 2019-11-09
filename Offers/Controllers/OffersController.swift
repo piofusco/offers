@@ -9,7 +9,7 @@
 import UIKit
 
 class OffersController: UIViewController {
-    weak var coordinator: MainCoordinator?
+    weak var delegate: Selectable?
 
     private var offersService: OffersService
     private var primaryView: OffersViewImplementation
@@ -36,6 +36,6 @@ class OffersController: UIViewController {
 
 extension OffersController: Selectable {
     func didSelectOffer(offer: Offer) {
-        coordinator?.viewOffer(offer: offer)
+        delegate?.didSelectOffer(offer: offer)
     }
 }

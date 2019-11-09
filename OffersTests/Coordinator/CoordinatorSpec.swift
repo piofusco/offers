@@ -25,25 +25,27 @@ class CoordinatorSpec: QuickSpec {
                     let lastPushedVC = mockNavigationController.lastPushedVC
                     XCTAssert(lastPushedVC is OffersController)
                     let offersViewController = lastPushedVC as! OffersController
-                    XCTAssert(offersViewController.coordinator === subject)
+                    XCTAssert(offersViewController.delegate === subject)
                 }
             }
 
-            describe("viewOffer") {
-                it("pushes an OfferDetailViewController onto the navigation controller with subject as coordinator") {
-                    let mockNavigationController = MockNavigationController()
-                    let subject = MainCoordinator(
-                        navigationController: mockNavigationController,
-                        offersService: MockOffersService()
-                    )
+            describe("Selectable") {
+                describe("didSelectOffer") {
+                    it("pushes an OfferDetailViewController onto the navigation controller with subject as coordinator") {
+                        let mockNavigationController = MockNavigationController()
+                        let subject = MainCoordinator(
+                            navigationController: mockNavigationController,
+                            offersService: MockOffersService()
+                        )
 
-                    let offer = Offer(id: "", name: "", url: "", description: "", terms: "", currentValue: "")
-                    subject.viewOffer(offer: offer)
+                        let offer = Offer(id: "", name: "", url: "", description: "", terms: "", currentValue: "")
+                        subject.didSelectOffer(offer: offer)
 
-                    let lastPushedVC = mockNavigationController.lastPushedVC
-                    XCTAssert(lastPushedVC is OfferDetailController)
-                    let offersViewController = lastPushedVC as! OfferDetailController
-                    XCTAssert(offersViewController.coordinator === subject)
+                        let lastPushedVC = mockNavigationController.lastPushedVC
+                        XCTAssert(lastPushedVC is OfferDetailController)
+                        let offersViewController = lastPushedVC as! OfferDetailController
+                        XCTAssert(offersViewController.delegate === subject)
+                    }
                 }
             }
 

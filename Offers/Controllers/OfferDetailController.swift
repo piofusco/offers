@@ -7,7 +7,7 @@ import UIKit
 
 class OfferDetailController: UIViewController {
     private var offer: Offer
-    weak var coordinator: MainCoordinator?
+    weak var delegate: Favoritable?
 
     init(offer: Offer) {
         self.offer = offer
@@ -28,6 +28,6 @@ class OfferDetailController: UIViewController {
 
 extension OfferDetailController: Favoritable {
     func didFavoriteOffer(withId id: String) {
-        coordinator?.didFavoriteOffer(withId: id)
+        delegate?.didFavoriteOffer(withId: id)
     }
 }

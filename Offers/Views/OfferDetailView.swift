@@ -80,6 +80,8 @@ extension OfferDetailView {
 
 extension OfferDetailView {
     private func setupTableView() {
+        backgroundColor = UIColor.white
+        tableView.backgroundColor = UIColor.white
         tableView.allowsSelection = false
         tableView.dataSource = self
         tableView.delegate = self

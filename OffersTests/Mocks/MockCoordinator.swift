@@ -20,7 +20,7 @@ class MockCoordinator: MainCoordinator {
 
     var lastViewedOfferId = ""
     var numberOfViewOfferInvocations = 0
-    override func viewOffer(offer: Offer) {
+    override func didSelectOffer(offer: Offer) {
         lastViewedOfferId = offer.id
         numberOfViewOfferInvocations += 1
     }

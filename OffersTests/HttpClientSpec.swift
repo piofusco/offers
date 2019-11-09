@@ -52,7 +52,7 @@ class HttpClientSpec: QuickSpec {
                         XCTAssertEqual(expectedURL.absoluteURL, mockSession.lastURL)
                         XCTAssertEqual(nextURLSessionDataTask.numberOfResumeInvocations, 1)
                         XCTAssertEqual(receivedData, mockSession.nextData)
-                        XCTAssertNil(receivedResponse)
+                        XCTAssertEqual(receivedResponse, mockSession.nextURLResponse)
                         XCTAssertNil(receivedError)
                     }
                 }

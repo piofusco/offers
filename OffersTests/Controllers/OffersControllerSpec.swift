@@ -43,7 +43,7 @@ class OffersControllerSpec: QuickSpec {
                         navigationController: UINavigationController(),
                         offersService: MockOffersService()
                     )
-                    subject.coordinator = mockMainCoordinator
+                    subject.delegate = mockMainCoordinator
 
                     subject.didSelectOffer(offer: expectedOffer)
 

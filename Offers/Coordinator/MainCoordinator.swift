@@ -5,7 +5,7 @@
 
 import UIKit
 
-class MainCoordinator: Coordinator, Favoritable {
+class MainCoordinator: Coordinator, Favoritable, Selectable {
     internal var navigationController: UINavigationController
     internal var offersService: OffersService
 
@@ -20,14 +20,14 @@ class MainCoordinator: Coordinator, Favoritable {
     func start() {
         let vc = OffersController(offersService: offersService)
         vc.navigationItem.title = "Offers"
-        vc.coordinator = self
+        vc.delegate = self
         navigationController.pushViewController(vc, animated: false)
     }
 
-    func viewOffer(offer: Offer) {
+    func didSelectOffer(offer: Offer) {
         let vc = OfferDetailController(offer: offer)
         vc.navigationItem.title = "Offer Detail"
-        vc.coordinator = self
+        vc.delegate = self
         navigationController.pushViewController(vc, animated: true)
     }
 

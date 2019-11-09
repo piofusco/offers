@@ -29,7 +29,7 @@ class OfferDetailControllerSpec: QuickSpec {
                         )
                     )
                     let mockCoordinator = MockCoordinator()
-                    subject.coordinator = mockCoordinator
+                    subject.delegate = mockCoordinator
 
                     subject.didFavoriteOffer(withId: expectedId)
 

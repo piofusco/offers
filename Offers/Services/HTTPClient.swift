@@ -28,7 +28,7 @@ class OffersClient: HTTPClient {
             if let responseData = data {
                 if let requestResponse = response as? HTTPURLResponse {
                     if requestResponse.statusCode == 200 {
-                        callback(responseData, nil, nil)
+                        callback(responseData, requestResponse, nil)
                         return
                     } else if 400...500 ~= requestResponse.statusCode {
                         callback(nil, response, nil)
