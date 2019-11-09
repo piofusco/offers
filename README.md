@@ -53,6 +53,15 @@ time a commit is pushed to master (no matter the branch)_(for more info, checkou
 
 To deploy a build manually, simply run `bundle exec fastlane beta`.
 
-### Onboarding 
+### ✈️ Onboarding ✈️
 
 Wanna be invited to the beta? Click [here](https://fierce-fjord-36618.herokuapp.com/)
+
+### 🎶 What didn't I finish? 🎶
+
+I hoped to demonstrate an example of using [Sinatra.rb](http://sinatrarb.com/) with a UI test. Take a look at 
+`server.rb` for a working mock server that returns what is present in the `offers.json`. You can run this with 
+`ruby server.rb`. 
+
+The `OffersHTTPService` I made isn't properly hooked up to switch out with the `OffersDataStoreService` in UI tests, 
+but you can probably imagine where I was going.
